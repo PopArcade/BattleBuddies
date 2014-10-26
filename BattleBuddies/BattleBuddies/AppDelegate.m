@@ -23,7 +23,13 @@
     [self.window setBackgroundColor:[UIColor blackColor]];
     [self.window makeKeyAndVisible];
     
-    [self.window setRootViewController:[[BBMainMenuViewController alloc] init]];
+    BBMainMenuViewController *menuViewController = [[BBMainMenuViewController alloc] init];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:menuViewController];
+    
+    [navController setNavigationBarHidden:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
+    [self.window setRootViewController:navController];
     
     return YES;
 }

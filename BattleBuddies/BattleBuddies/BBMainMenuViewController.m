@@ -7,8 +7,13 @@
 //
 
 #import "BBMainMenuViewController.h"
+#import "BBMapViewController.h"
 
 @interface BBMainMenuViewController ()
+
+@property (nonatomic, strong) UIImageView *backgroundView;
+@property (nonatomic, strong) UIImageView *logoView;
+@property (nonatomic, strong) UIButton *playButton;
 
 @end
 
@@ -17,11 +22,78 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    [self.view setBackgroundColor:[UIColor lightGrayColor]];
+    
+    [self.backgroundView setBackgroundColor:[UIColor blueColor]];
+    [self.logoView setBackgroundColor:[UIColor greenColor]];
+    [self.playButton setBackgroundColor:[UIColor redColor]];
+    
+    [self.view addSubview:self.backgroundView];
+    [self.view addSubview:self.logoView];
+    [self.view addSubview:self.playButton];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)play:(id)sender
+{
+    BBMapViewController *mapViewController = [[BBMapViewController alloc] init];
+    
+    [self.navigationController pushViewController:mapViewController animated:YES];
+}
+
+#pragma mark - Views
+
+- (UIImageView *)backgroundView
+{
+    if (!_backgroundView) {
+        _backgroundView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+        [_backgroundView setAutoresizingMask:UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth];
+    }
+    
+    return _backgroundView;
+}
+
+- (UIImageView *)logoView
+{
+    if (!_logoView) {
+        CGFloat startX = 32.0;
+        CGFloat width = CGRectGetWidth(self.view.bounds) - (startX * 2.0);
+        
+        _logoView = [[UIImageView alloc] initWithFrame:CGRectMake(startX, startX, width, 256.0)];
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            [_logoView setAutoresizingMask:UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin];
+        }
+        else {
+            [_logoView setAutoresizingMask:UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleRightMargin];
+        }
+        
+    }
+    
+    return _logoView;
+}
+
+- (UIButton *)playButton
+{
+    if (!_playButton) {
+        CGFloat width = 256.0;
+        CGFloat startX = (CGRectGetWidth(self.view.bounds) - width) / 2.0;
+        
+        _playButton = [[UIButton alloc] initWithFrame:CGRectMake(startX, CGRectGetHeight(self.view.bounds) - 224.0, width, 64.0)];
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            [_playButton setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin];
+        }
+        else {
+            [_playButton setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin];
+        }
+        
+        [_playButton setTitle:@"Play" forState:UIControlStateNormal];
+        
+        [_playButton addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _playButton;
 }
 
 @end

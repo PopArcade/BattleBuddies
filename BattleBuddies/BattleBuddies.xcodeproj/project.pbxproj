@@ -15,6 +15,7 @@
 		EF92548D19FD3A7800FFA3F8 /* BattleBuddiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92548C19FD3A7800FFA3F8 /* BattleBuddiesTests.m */; };
 		EF92549819FD3B0400FFA3F8 /* BBMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92549719FD3B0400FFA3F8 /* BBMapViewController.m */; };
 		EF92549B19FD3B1700FFA3F8 /* BBBattleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92549A19FD3B1700FFA3F8 /* BBBattleViewController.m */; };
+		EF92549E19FD44B800FFA3F8 /* BBGridLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92549D19FD44B800FFA3F8 /* BBGridLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		EF92549719FD3B0400FFA3F8 /* BBMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMapViewController.m; sourceTree = "<group>"; };
 		EF92549919FD3B1700FFA3F8 /* BBBattleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBattleViewController.h; sourceTree = "<group>"; };
 		EF92549A19FD3B1700FFA3F8 /* BBBattleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBattleViewController.m; sourceTree = "<group>"; };
+		EF92549C19FD44B800FFA3F8 /* BBGridLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBGridLayout.h; sourceTree = "<group>"; };
+		EF92549D19FD44B800FFA3F8 /* BBGridLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBGridLayout.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +92,7 @@
 				EF92547519FD3A7800FFA3F8 /* AppDelegate.m */,
 				EF92547719FD3A7800FFA3F8 /* BBMainMenuViewController.h */,
 				EF92547819FD3A7800FFA3F8 /* BBMainMenuViewController.m */,
-				EF92549619FD3B0400FFA3F8 /* BBMapViewController.h */,
-				EF92549719FD3B0400FFA3F8 /* BBMapViewController.m */,
+				EF92549F19FD44BC00FFA3F8 /* Map */,
 				EF92549919FD3B1700FFA3F8 /* BBBattleViewController.h */,
 				EF92549A19FD3B1700FFA3F8 /* BBBattleViewController.m */,
 				EF92547D19FD3A7800FFA3F8 /* Images.xcassets */,
@@ -124,6 +126,17 @@
 				EF92548B19FD3A7800FFA3F8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EF92549F19FD44BC00FFA3F8 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				EF92549619FD3B0400FFA3F8 /* BBMapViewController.h */,
+				EF92549719FD3B0400FFA3F8 /* BBMapViewController.m */,
+				EF92549C19FD44B800FFA3F8 /* BBGridLayout.h */,
+				EF92549D19FD44B800FFA3F8 /* BBGridLayout.m */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +188,7 @@
 				TargetAttributes = {
 					EF92546C19FD3A7800FFA3F8 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = Y5QZY6467R;
 					};
 					EF92548519FD3A7800FFA3F8 = {
 						CreatedOnToolsVersion = 6.1;
@@ -230,6 +244,7 @@
 				EF92547619FD3A7800FFA3F8 /* AppDelegate.m in Sources */,
 				EF92547319FD3A7800FFA3F8 /* main.m in Sources */,
 				EF92549B19FD3B1700FFA3F8 /* BBBattleViewController.m in Sources */,
+				EF92549E19FD44B800FFA3F8 /* BBGridLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,9 +360,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = BattleBuddies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -355,9 +372,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = BattleBuddies/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -414,6 +433,7 @@
 				EF92549219FD3A7800FFA3F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF92549319FD3A7800FFA3F8 /* Build configuration list for PBXNativeTarget "BattleBuddiesTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +442,7 @@
 				EF92549519FD3A7800FFA3F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
