@@ -16,6 +16,7 @@
 		EF92549819FD3B0400FFA3F8 /* BBMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92549719FD3B0400FFA3F8 /* BBMapViewController.m */; };
 		EF92549B19FD3B1700FFA3F8 /* BBBattleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92549A19FD3B1700FFA3F8 /* BBBattleViewController.m */; };
 		EF92549E19FD44B800FFA3F8 /* BBGridLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92549D19FD44B800FFA3F8 /* BBGridLayout.m */; };
+		EFDE419319FD73650035B28B /* BBMapTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFDE419219FD73650035B28B /* BBMapTouchView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		EF92549A19FD3B1700FFA3F8 /* BBBattleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBattleViewController.m; sourceTree = "<group>"; };
 		EF92549C19FD44B800FFA3F8 /* BBGridLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBGridLayout.h; sourceTree = "<group>"; };
 		EF92549D19FD44B800FFA3F8 /* BBGridLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBGridLayout.m; sourceTree = "<group>"; };
+		EFDE419119FD73650035B28B /* BBMapTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMapTouchView.h; sourceTree = "<group>"; };
+		EFDE419219FD73650035B28B /* BBMapTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMapTouchView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +138,8 @@
 				EF92549719FD3B0400FFA3F8 /* BBMapViewController.m */,
 				EF92549C19FD44B800FFA3F8 /* BBGridLayout.h */,
 				EF92549D19FD44B800FFA3F8 /* BBGridLayout.m */,
+				EFDE419119FD73650035B28B /* BBMapTouchView.h */,
+				EFDE419219FD73650035B28B /* BBMapTouchView.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -244,6 +249,7 @@
 				EF92547619FD3A7800FFA3F8 /* AppDelegate.m in Sources */,
 				EF92547319FD3A7800FFA3F8 /* main.m in Sources */,
 				EF92549B19FD3B1700FFA3F8 /* BBBattleViewController.m in Sources */,
+				EFDE419319FD73650035B28B /* BBMapTouchView.m in Sources */,
 				EF92549E19FD44B800FFA3F8 /* BBGridLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
