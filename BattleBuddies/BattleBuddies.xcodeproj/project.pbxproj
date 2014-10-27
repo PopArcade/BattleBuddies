@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		45AFCFD919FD4E4E0044381B /* BBBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFD819FD4E4E0044381B /* BBBuddy.m */; };
-		45AFCFDC19FD50750044381B /* BBAttack.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFDB19FD50750044381B /* BBAttack.m */; };
 		45AFCFDF19FD535F0044381B /* BBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFDE19FD535F0044381B /* BBConstants.m */; };
 		45AFCFE219FD58E00044381B /* BBBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFE119FD58E00044381B /* BBBody.m */; };
 		45AFCFE519FD6A4C0044381B /* BaseAttributes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45AFCFE419FD6A4C0044381B /* BaseAttributes.plist */; };
-		45AFCFE819FD78EF0044381B /* BBDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFE719FD78EF0044381B /* BBDatabase.m */; };
 		45AFCFEA19FD920B0044381B /* NameSuffix.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45AFCFE919FD920B0044381B /* NameSuffix.plist */; };
 		45AFCFF219FDC0D40044381B /* AttackSyllabus.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45AFCFF119FDC0D40044381B /* AttackSyllabus.plist */; };
 		45AFCFF619FDCC700044381B /* Attacks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45AFCFF519FDCC700044381B /* Attacks.plist */; };
+		45AFCFF719FDCD160044381B /* BBAttack.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFDB19FD50750044381B /* BBAttack.m */; };
+		45AFCFF819FDCD220044381B /* BBDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFE719FD78EF0044381B /* BBDatabase.m */; };
 		EF92547319FD3A7800FFA3F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92547219FD3A7800FFA3F8 /* main.m */; };
 		EF92547619FD3A7800FFA3F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92547519FD3A7800FFA3F8 /* AppDelegate.m */; };
 		EF92547919FD3A7800FFA3F8 /* BBMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92547819FD3A7800FFA3F8 /* BBMainMenuViewController.m */; };
@@ -301,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45AFCFF819FDCD220044381B /* BBDatabase.m in Sources */,
 				EF92547919FD3A7800FFA3F8 /* BBMainMenuViewController.m in Sources */,
 				45AFCFDF19FD535F0044381B /* BBConstants.m in Sources */,
 				EF92549819FD3B0400FFA3F8 /* BBMapViewController.m in Sources */,
@@ -309,8 +310,9 @@
 				45AFCFE219FD58E00044381B /* BBBody.m in Sources */,
 				EF92547319FD3A7800FFA3F8 /* main.m in Sources */,
 				EF92549B19FD3B1700FFA3F8 /* BBBattleViewController.m in Sources */,
-				45AFCFE819FD78EF0044381B /* BBDatabase.m in Sources */,
-				45AFCFDC19FD50750044381B /* BBAttack.m in Sources */,
+				EFDE419319FD73650035B28B /* BBMapTouchView.m in Sources */,
+				45AFCFF719FDCD160044381B /* BBAttack.m in Sources */,
+				EF92549E19FD44B800FFA3F8 /* BBGridLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
