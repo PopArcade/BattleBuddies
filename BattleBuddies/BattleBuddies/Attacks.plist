@@ -1455,7 +1455,7 @@
 	</dict>
 	<key>Bullet Punch</key>
 	<dict>
-		<key>Bullet Punch</key>
+		<key>name</key>
 		<string>Bullet Punch</string>
 		<key>element</key>
 		<integer>14</integer>

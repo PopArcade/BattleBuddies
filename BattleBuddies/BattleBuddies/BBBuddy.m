@@ -291,7 +291,7 @@ NSInteger const kSecondEvolution = 35;
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"BUDDY: %@ Element type: %@ Level: %lu\nSTATS:\nAttack    : %d \nSp.Attack: %d \nDefense   : %d \nSp.Defense: %d \nMax Health: %d \nSpeed     : %d \nAgility   : %d \nATTACKS:\n%@", self.name, [BBDatabase stringForElement:self.element], self.level, [self.attack intValue], [self.spAttack intValue], [self.defense intValue], [self.spDefense intValue], [self.maxHealth intValue], [self.speed intValue], [self.agility intValue], self.learnableAttacks];
+    return [NSString stringWithFormat:@"BUDDY: %@ Element type: %@ Level: %lu\nSTATS:\nAttack    : %d \nSp.Attack: %d \nDefense   : %d \nSp.Defense: %d \nMax Health: %d \nSpeed     : %d \nAgility   : %d \nATTACKS:\n%@", self.name, [BBDatabase stringForElement:self.element], self.level, [self.attack intValue], [self.spAttack intValue], [self.defense intValue], [self.spDefense intValue], [self.maxHealth intValue], [self.speed intValue], [self.agility intValue], self.currentAttacks];
 }
 
 #pragma mark - Hashing
