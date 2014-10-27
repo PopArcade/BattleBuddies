@@ -46,6 +46,8 @@
 {
     UICollectionViewLayoutAttributes *attribute = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:[NSIndexPath indexPathForItem:x inSection:y]];
     
+//    NSLog(@"layoutAttributesForX: %li andY: %li",x,y);
+    
     [attribute setFrame:CGRectMake(x * self.itemSize.width, y * self.itemSize.height, self.itemSize.width, self.itemSize.height)];
     
     return attribute;
@@ -53,7 +55,7 @@
 
 - (NSArray *)layoutAttributesForColumns:(NSInteger)columns rows:(NSInteger)rows startingX:(NSInteger)indexX startY:(NSInteger)indexY
 {
-//    NSLog(@"columns: %li rows: %li indexX: %li indexY: %li",(long)columns,(long)rows,(long)indexX,(long)indexY);
+    NSLog(@"columns: %li rows: %li indexX: %li indexY: %li",(long)columns,(long)rows,(long)indexX,(long)indexY);
     NSMutableArray *attributes = [NSMutableArray array];
     for (int x = (int)indexX; x < (indexX + columns); x++) {
         for (int y = (int)indexY; y < (indexY + rows); y++) {
@@ -72,6 +74,7 @@
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
+    NSLog(@"%@",NSStringFromCGRect(rect));
     NSInteger indexX = MAX(0, (int)rect.origin.x / (int)self.itemSize.width);
     NSInteger indexY = MAX(0, (int)rect.origin.y / (int)self.itemSize.height);
     

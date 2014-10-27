@@ -8,9 +8,14 @@
 
 #import "BBMapViewController.h"
 
+#import "BBMapCollectionViewCell.h"
 #import "BBGridLayout.h"
 
 #import "BBMapTouchView.h"
+
+#import "BBMapAtlas.h"
+
+
 
 @interface BBMapViewController () <UICollectionViewDataSource, UICollectionViewDelegate, BBMapTouchDelegate>
 {
@@ -33,6 +38,8 @@
 
 @property (nonatomic, strong) BBMapTouchView *touchView;
 
+@property (nonatomic, strong) BBMapAtlas *tileMap;
+
 @end
 
 @implementation BBMapViewController
@@ -43,8 +50,151 @@
     
     [self.view addSubview:self.collectionView];
     
+    [self setupDirectionButtons];
+    
+    [self.view addSubview:self.touchView];
+    
+    
+    [self setTileMap:[[BBMapAtlas alloc] init]];
+    
+    
+//    NSMutableArray *columns = [NSMutableArray array];
+//    for (int x = 0; x < 2000; x++) {
+//        NSMutableArray *column = [NSMutableArray array];
+//        for (int y = 0; y < 2000; y++) {
+//            [column addObject:[NSValue valueWithCGPoint:CGPointMake(x, y)]];
+//        }
+//        [columns addObject:column];
+//    }
+    
+//    [self.upLeftDirection setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:1.0]];
+//    [self.upDirection setBackgroundColor:[[UIColor orangeColor] colorWithAlphaComponent:1.0]];
+//    [self.upRightDirection setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:1.0]];
+//    
+//    [self.downLeftDirection setBackgroundColor:[[UIColor blueColor] colorWithAlphaComponent:1.0]];
+//    [self.downDirection setBackgroundColor:[[UIColor greenColor] colorWithAlphaComponent:1.0]];
+//    [self.downRightDirection setBackgroundColor:[[UIColor blueColor] colorWithAlphaComponent:1.0]];
+//    
+//    [self.rightDirection setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:1.0]];
+//    [self.leftDirection setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:1.0]];
+//    
+//    [self.touchView setBackgroundColor:[[UIColor purpleColor] colorWithAlphaComponent:0.5]];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+//    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:2500 inSection:2500] atScrollPosition:UICollectionViewScrollPositionTop|UICollectionViewScrollPositionRight animated:NO];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
+#pragma mark - BBMapTouchDelegate
+
+- (void)didBeginTouching:(BBMapTouchView *)view
+{
+    [directionButtons.allValues enumerateObjectsUsingBlock:^(UIButton *button, NSUInteger idx, BOOL *stop) {
+        if (CGRectContainsPoint(button.frame, view.locationOfTouch)) {
+            [button sendActionsForControlEvents:UIControlEventTouchUpInside];
+        }
+    }];
+}
+
+- (void)stillTouching:(BBMapTouchView *)view
+{
+    [directionButtons.allValues enumerateObjectsUsingBlock:^(UIButton *button, NSUInteger idx, BOOL *stop) {
+        if (CGRectContainsPoint(button.frame, view.locationOfTouch)) {
+            [button sendActionsForControlEvents:UIControlEventTouchUpInside];
+        }
+    }];
+}
+
+
+#pragma mark - UICollectionViewDataSource
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return self.generator.size.width;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.generator.size.height;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    BBMapCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([BBMapCollectionViewCell class]) forIndexPath:indexPath];
+    
+//    NSLog(@"%li",indexPath.row);
+    NSArray *atlasCoordinates = [self.generator tileAtlasCoordinatesAtX:(int)indexPath.row andY:(int)indexPath.section];
+    
+//    if (atlasCoordinates) {
+//        <#statements#>
+//    }
+    
+    [atlasCoordinates enumerateObjectsUsingBlock:^(NSValue *value, NSUInteger idx, BOOL *stop) {
+        CGPoint atlasCoordinate = [value CGPointValue];
+        
+        UIImageView *imageView = [cell imageViewAtIndex:idx];
+        
+        [imageView setImage:self.tileMap.tiles[(int)atlasCoordinate.x][(int)atlasCoordinate.y]];
+    }];
+    
 
     
+    return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+#pragma mark - Views
+
+- (BBMapTouchView *)touchView
+{
+    if (!_touchView) {
+        _touchView = [[BBMapTouchView alloc] initWithFrame:self.view.bounds];
+        [_touchView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
+        
+        [_touchView setDelegate:self];
+    }
+    
+    return _touchView;
+}
+
+- (UICollectionView *)collectionView
+{
+    if (!_collectionView) {
+        _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.flowLayout];
+        [_collectionView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
+        
+        [_collectionView setDataSource:self];
+        [_collectionView setDelegate:self];
+        
+        [_collectionView registerClass:[BBMapCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([BBMapCollectionViewCell class])];
+        
+        [_collectionView setScrollEnabled:NO];
+    }
+    
+    return _collectionView;
+}
+
+- (BBGridLayout *)flowLayout
+{
+    if (!_flowLayout) {
+        _flowLayout = [[BBGridLayout alloc] init];
+    }
+    
+    return _flowLayout;
+}
+
+- (void)setupDirectionButtons
+{
     self.upLeftDirection = [[UIButton alloc] initWithFrame:CGRectZero];
     [self.upLeftDirection addTarget:self action:@selector(goUpLeft:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.upLeftDirection];
@@ -70,7 +220,7 @@
     self.downRightDirection = [[UIButton alloc] initWithFrame:CGRectZero];
     [self.downRightDirection addTarget:self action:@selector(goDownRight:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.downRightDirection];
-
+    
     
     
     self.rightDirection = [[UIButton alloc] initWithFrame:CGRectZero];
@@ -107,138 +257,7 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[upLeft(>=96.0)][left(==right)][downLeft(==upLeft)]|" options:0 metrics:nil views:directionButtons]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[up(>=96.0)][left][down(==up)]|" options:0 metrics:nil views:directionButtons]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[upRight(==downRight)][right(==left)][downRight(==upRight)]|" options:0 metrics:nil views:directionButtons]];
-    
-    
-    
-//    [self.upLeftDirection setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:1.0]];
-//    [self.upDirection setBackgroundColor:[[UIColor orangeColor] colorWithAlphaComponent:1.0]];
-//    [self.upRightDirection setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:1.0]];
-//    
-//    [self.downLeftDirection setBackgroundColor:[[UIColor blueColor] colorWithAlphaComponent:1.0]];
-//    [self.downDirection setBackgroundColor:[[UIColor greenColor] colorWithAlphaComponent:1.0]];
-//    [self.downRightDirection setBackgroundColor:[[UIColor blueColor] colorWithAlphaComponent:1.0]];
-//    
-//    [self.rightDirection setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:1.0]];
-//    [self.leftDirection setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:1.0]];
-    
-    
-//    [self.touchView setBackgroundColor:[[UIColor purpleColor] colorWithAlphaComponent:0.5]];
-    [self.view addSubview:self.touchView];
 }
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:2500 inSection:2500] atScrollPosition:UICollectionViewScrollPositionTop|UICollectionViewScrollPositionRight animated:NO];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-#pragma mark - BBMapTouchDelegate
-
-- (void)didBeginTouching:(BBMapTouchView *)view
-{
-    [directionButtons.allValues enumerateObjectsUsingBlock:^(UIButton *button, NSUInteger idx, BOOL *stop) {
-        if (CGRectContainsPoint(button.frame, view.locationOfTouch)) {
-            [button sendActionsForControlEvents:UIControlEventTouchUpInside];
-        }
-    }];
-}
-
-- (void)stillTouching:(BBMapTouchView *)view
-{
-    [directionButtons.allValues enumerateObjectsUsingBlock:^(UIButton *button, NSUInteger idx, BOOL *stop) {
-        if (CGRectContainsPoint(button.frame, view.locationOfTouch)) {
-            [button sendActionsForControlEvents:UIControlEventTouchUpInside];
-        }
-    }];
-}
-
-
-#pragma mark - UICollectionViewDataSource
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 5000;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-    return 5000;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class]) forIndexPath:indexPath];
-    
-//    [cell setBackgroundColor:[UIColor colorWithHue:(indexPath.section/10000.0) saturation:1.0 brightness:((10000.0 - indexPath.row)/10000.0) alpha:1.0]];
-//    [cell setBackgroundColor:[UIColor colorWithHue:(arc4random() % 200)/200.0 saturation:1.0 brightness:1.0 alpha:1.0]];
-    [cell setBackgroundColor:[UIColor colorWithHue:1.0 saturation:((indexPath.section % 2) ? 0.75 : 0.5) brightness:((indexPath.row % 2) ? 0.5 : 0.75) alpha:1.0]];
-    
-    [cell.layer setBorderColor:[UIColor lightGrayColor].CGColor];
-    [cell.layer setBorderWidth:0.5];
-    
-    UILabel *crapLabel = (UILabel *)[cell viewWithTag:99];
-    if (!crapLabel) {
-        crapLabel = [[UILabel alloc] initWithFrame:cell.bounds];
-        [crapLabel setTag:99];
-        [crapLabel setFont:[UIFont systemFontOfSize:10.0]];
-        [crapLabel setNumberOfLines:2];
-        [cell addSubview:crapLabel];
-    }
-    
-    [crapLabel setText:[NSString stringWithFormat:@"%li\n%li",indexPath.row, indexPath.section]];
-
-    
-    return cell;
-}
-
-#pragma mark - UICollectionViewDelegate
-
-#pragma mark - Views
-
-- (BBMapTouchView *)touchView
-{
-    if (!_touchView) {
-        _touchView = [[BBMapTouchView alloc] initWithFrame:self.view.bounds];
-        [_touchView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
-        
-        [_touchView setDelegate:self];
-    }
-    
-    return _touchView;
-}
-
-- (UICollectionView *)collectionView
-{
-    if (!_collectionView) {
-        _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.flowLayout];
-        [_collectionView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
-        
-        [_collectionView setDataSource:self];
-        [_collectionView setDelegate:self];
-        
-        [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([UICollectionViewCell class])];
-        
-        [_collectionView setScrollEnabled:NO];
-    }
-    
-    return _collectionView;
-}
-
-- (BBGridLayout *)flowLayout
-{
-    if (!_flowLayout) {
-        _flowLayout = [[BBGridLayout alloc] init];
-    }
-    
-    return _flowLayout;
-}
-
 
 #pragma mark - Directions
 
@@ -271,6 +290,10 @@
     NSInteger x = self.collectionView.contentOffset.x / 32.0;
     NSInteger y = self.collectionView.contentOffset.y / 32.0;
     
+    if (x <= 0) {
+        return;
+    }
+    
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:--x inSection:y] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
 }
 
@@ -278,6 +301,10 @@
 {
     NSInteger x = self.collectionView.contentOffset.x / 32.0;
     NSInteger y = self.collectionView.contentOffset.y / 32.0;
+    
+    if (x >= [self numberOfSectionsInCollectionView:self.collectionView]) {
+        return;
+    }
     
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:++x inSection:y] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
 }
@@ -287,6 +314,10 @@
     NSInteger x = self.collectionView.contentOffset.x / 32.0;
     NSInteger y = self.collectionView.contentOffset.y / 32.0;
     
+    if (y <= 0) {
+        return;
+    }
+    
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:x inSection:--y] atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
 }
 
@@ -294,6 +325,10 @@
 {
     NSInteger x = self.collectionView.contentOffset.x / 32.0;
     NSInteger y = self.collectionView.contentOffset.y / 32.0;
+    
+    if (y >= [self collectionView:self.collectionView numberOfItemsInSection:0]) {
+        return;
+    }
     
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:x inSection:++y] atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
 }

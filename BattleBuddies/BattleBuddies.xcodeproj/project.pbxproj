@@ -29,6 +29,9 @@
 		EF99FB151A2233210045E1BC /* BBBuddyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF99FB141A2233210045E1BC /* BBBuddyListViewController.m */; };
 		EF99FB191A22333C0045E1BC /* BBItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF99FB181A22333C0045E1BC /* BBItemCell.m */; };
 		EF99FB1D1A2233530045E1BC /* BBBuddyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF99FB1C1A2233530045E1BC /* BBBuddyCell.m */; };
+		EFCF81601A22352D00B5535D /* BBMapAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF815B1A22352D00B5535D /* BBMapAtlas.m */; };
+		EFCF81611A22352D00B5535D /* BBMapCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF815D1A22352D00B5535D /* BBMapCollectionViewCell.m */; };
+		EFCF81621A22352D00B5535D /* BBMapGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF815F1A22352D00B5535D /* BBMapGenerator.m */; };
 		EFDE419319FD73650035B28B /* BBMapTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFDE419219FD73650035B28B /* BBMapTouchView.m */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +86,12 @@
 		EF99FB181A22333C0045E1BC /* BBItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBItemCell.m; sourceTree = "<group>"; };
 		EF99FB1B1A2233530045E1BC /* BBBuddyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBuddyCell.h; sourceTree = "<group>"; };
 		EF99FB1C1A2233530045E1BC /* BBBuddyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBuddyCell.m; sourceTree = "<group>"; };
+		EFCF815A1A22352D00B5535D /* BBMapAtlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMapAtlas.h; sourceTree = "<group>"; };
+		EFCF815B1A22352D00B5535D /* BBMapAtlas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMapAtlas.m; sourceTree = "<group>"; };
+		EFCF815C1A22352D00B5535D /* BBMapCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMapCollectionViewCell.h; sourceTree = "<group>"; };
+		EFCF815D1A22352D00B5535D /* BBMapCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMapCollectionViewCell.m; sourceTree = "<group>"; };
+		EFCF815E1A22352D00B5535D /* BBMapGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMapGenerator.h; sourceTree = "<group>"; };
+		EFCF815F1A22352D00B5535D /* BBMapGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMapGenerator.m; sourceTree = "<group>"; };
 		EFDE419119FD73650035B28B /* BBMapTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMapTouchView.h; sourceTree = "<group>"; };
 		EFDE419219FD73650035B28B /* BBMapTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMapTouchView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,6 +210,12 @@
 				EF92549D19FD44B800FFA3F8 /* BBGridLayout.m */,
 				EFDE419119FD73650035B28B /* BBMapTouchView.h */,
 				EFDE419219FD73650035B28B /* BBMapTouchView.m */,
+				EFCF815A1A22352D00B5535D /* BBMapAtlas.h */,
+				EFCF815B1A22352D00B5535D /* BBMapAtlas.m */,
+				EFCF815C1A22352D00B5535D /* BBMapCollectionViewCell.h */,
+				EFCF815D1A22352D00B5535D /* BBMapCollectionViewCell.m */,
+				EFCF815E1A22352D00B5535D /* BBMapGenerator.h */,
+				EFCF815F1A22352D00B5535D /* BBMapGenerator.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -350,12 +365,15 @@
 				45AFCFDF19FD535F0044381B /* BBConstants.m in Sources */,
 				EF92549819FD3B0400FFA3F8 /* BBMapViewController.m in Sources */,
 				EF99FB1D1A2233530045E1BC /* BBBuddyCell.m in Sources */,
+				EFCF81611A22352D00B5535D /* BBMapCollectionViewCell.m in Sources */,
 				45AFCFD919FD4E4E0044381B /* BBBuddy.m in Sources */,
 				EF92547619FD3A7800FFA3F8 /* AppDelegate.m in Sources */,
 				45AFCFE219FD58E00044381B /* BBBody.m in Sources */,
 				EF92547319FD3A7800FFA3F8 /* main.m in Sources */,
 				EF99FB121A22330D0045E1BC /* BBItemListViewController.m in Sources */,
 				EF92549B19FD3B1700FFA3F8 /* BBBattleViewController.m in Sources */,
+				EFCF81601A22352D00B5535D /* BBMapAtlas.m in Sources */,
+				EFCF81621A22352D00B5535D /* BBMapGenerator.m in Sources */,
 				EFDE419319FD73650035B28B /* BBMapTouchView.m in Sources */,
 				EF99FB151A2233210045E1BC /* BBBuddyListViewController.m in Sources */,
 				EF99FB191A22333C0045E1BC /* BBItemCell.m in Sources */,

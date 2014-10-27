@@ -1,5 +1,5 @@
 //
-//  BBMapViewController.h
+//  BBMapCollectionViewCell.h
 //  BattleBuddies
 //
 //  Created by Ryan Poolos on 10/26/14.
@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-#import "BBMapGenerator.h"
+@interface BBMapCollectionViewCell : UICollectionViewCell
 
-@interface BBMapViewController : UIViewController
-
-@property (nonatomic, strong) BBMapGenerator *generator;
+- (UIImageView *)imageViewAtIndex:(NSInteger)index;
 
 @end

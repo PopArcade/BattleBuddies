@@ -38,7 +38,17 @@
 {
     BBMapViewController *mapViewController = [[BBMapViewController alloc] init];
     
-    [self.navigationController pushViewController:mapViewController animated:YES];
+    NSLog(@"Start Map Generator");
+    mapViewController.generator = [[BBMapGenerator alloc] initWithSize:CGSizeMake(1000.0, 1000.0)];
+    
+    [mapViewController.generator generateMap:^{
+        NSLog(@"Finish Map Generator");
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.navigationController pushViewController:mapViewController animated:YES];
+        });
+    }];
+    
 }
 
 #pragma mark - Views

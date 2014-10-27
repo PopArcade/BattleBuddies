@@ -9,6 +9,10 @@
 #import "BBMapTouchView.h"
 
 @interface BBMapTouchView ()
+{
+    CGFloat multiplier;
+    CGFloat lastUpdate;
+}
 
 @property (nonatomic, strong) NSTimer *repeatTimer;
 @property (nonatomic, readwrite) CGPoint locationOfTouch;
@@ -19,8 +23,16 @@
 
 - (void)updateTouch
 {
-    if ([self.delegate respondsToSelector:@selector(stillTouching:)]) {
-        [self.delegate stillTouching:self];
+    lastUpdate += multiplier;
+    
+    if (lastUpdate > 15.0) {
+        lastUpdate = 0.0;
+        
+        multiplier *= 1.05;
+        
+        if ([self.delegate respondsToSelector:@selector(stillTouching:)]) {
+            [self.delegate stillTouching:self];
+        }
     }
 }
 
@@ -28,7 +40,9 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.repeatTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(updateTouch) userInfo:nil repeats:YES];
+    multiplier = 1.0;
+    
+    self.repeatTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(updateTouch) userInfo:nil repeats:YES];
     
     UITouch *touch = touches.anyObject;
     
