@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Tackle</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Scratch</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Take Down</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Headbutt</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Bite</string>
+				<string>Slam</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Skull Bash</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Comet Punch</string>
+				<string>Comet Punch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Trample</string>
+				<string>Trample</string>
+			</array>
+		</array>
+	</array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Smoldering</string>
+				<string>Smoldering</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Slam</string>
+				<string>Bite</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Flamethrower</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Firespin</string>
+				<string>Skull Bash</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Sick Burn</string>
+				<string>Trample</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Incinerate</string>
+				<string>Incinerate</string>
+			</array>
+		</array>
+	</array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Water Gun</string>
+				<string>Water Gun</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Slam</string>
+				<string>Bite</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Haze</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Hydro Pump</string>
+				<string>Skull Bash</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Typhoon</string>
+				<string>Trample</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Holy Dive</string>
+				<string>Holy Dive</string>
+			</array>
+		</array>
+	</array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Razor Leaf</string>
+				<string>Razor Leaf</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Slam</string>
+				<string>Bite</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Tangle</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Seed Bomb</string>
+				<string>Skull Bash</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Solar Beam</string>
+				<string>Trample</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Thorn Whip</string>
+				<string>Thorn Whip</string>
+			</array>
+		</array>
+	</array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Discharge</string>
+				<string>Discharge</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Slam</string>
+				<string>Bite</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Thunder Smash</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Bolts... of Lightning</string>
+				<string>Skull Bash</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Volt Cannon</string>
+				<string>Comet Punch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Tempest Fury</string>
+				<string>Tempest Fury</string>
+			</array>
+		</array>
+	</array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Peck</string>
+				<string>Peck</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Bite</string>
+				<string>Slam</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Barrel Roll</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Air Slash</string>
+				<string>Skull Bash</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Talon Cyclone</string>
+				<string>Comet Punch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Oblivion Wing</string>
+				<string>Oblivion Wing</string>
+			</array>
+		</array>
+	</array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Cold Sweat</string>
+				<string>Cold Sweat</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Slam</string>
+				<string>Bite</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>OoOoOoOoOo</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Nightmare</string>
+				<string>Skull Bash</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>The Grudge</string>
+				<string>Comet Punch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Possess</string>
+				<string>Possess</string>
+			</array>
+		</array>
+	</array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Zen Headbutt</string>
+				<string>Zen Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Slam</string>
+				<string>Bite</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Disable</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>There is no spoon</string>
+				<string>Skull Bash</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Psionic Blast</string>
+				<string>Comet Punch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Force Choke</string>
+				<string>Force Choke</string>
+			</array>
+		</array>
+	</array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Classic Rock</string>
+				<string>Classic Rock</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Slam</string>
+				<string>Bite</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Bulldoze</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Fraking</string>
+				<string>Trample</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Tectonic Shift</string>
+				<string>Tectonic Shift</string>
+			</array>
+		</array>
+	</array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Sweeping Axe Kick</string>
+				<string>Sweeping Axe Kick</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Slam</string>
+				<string>Bite</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Triangle Choke</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Sky Uppercut</string>
+				<string>Skull Bash</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Beard</string>
+				<string>Comet Punch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Chuck-House</string>
+				<string>Chuck-House</string>
+			</array>
+		</array>
+	</array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Back Stab</string>
+				<string>Back Stab</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Slam</string>
+				<string>Bite</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Eviscerate</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Knee Cap</string>
+				<string>Skull Bash</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Taint Kick</string>
+				<string>Trample</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Curb Stomp</string>
+				<string>Curb Stomp</string>
+			</array>
+		</array>
+	</array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Elemental Blast</string>
+				<string>Elemental Blast</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Slam</string>
+				<string>Bite</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Outrage</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Devour</string>
+				<string>Skull Bash</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Hoard</string>
+				<string>Comet Punch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>BURNiNATE</string>
+				<string>BURNiNATE</string>
+			</array>
+		</array>
+	</array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Pull My Tail</string>
+				<string>Pull My Tail</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Slam</string>
+				<string>Bite</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Poison Spit</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Acid</string>
+				<string>Skull Bash</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Venomous Fang</string>
+				<string>Trample</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Decay</string>
+				<string>Decay</string>
+			</array>
+		</array>
+	</array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>String Shot</string>
+				<string>String Shot</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Slam</string>
+				<string>Bite</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Butt Light</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Mega Horn</string>
+				<string>Skull Bash</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Malaria</string>
+				<string>Trample</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Infestation</string>
+				<string>Infestation</string>
+			</array>
+		</array>
+	</array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Screech</string>
+				<string>Screech</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Slam</string>
+				<string>Bite</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Gear Grind</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Iron Jaw</string>
+				<string>Skull Bash</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Magnet Bomb</string>
+				<string>Trample</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Bullet Punch</string>
+				<string>Bullet Punch</string>
+			</array>
+		</array>
+	</array>
+	<array>
+		<array>
+			<array>
+				<string>Tackle</string>
+				<string>Scratch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Take Down</string>
+				<string>Headbutt</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Chill Out</string>
+				<string>Chill Out</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Slam</string>
+				<string>Bite</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Blizzard</string>
+				<string>Upwind</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Arctic Blast</string>
+				<string>Skull Bash</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Icicle Lance</string>
+				<string>Comet Punch</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>Avalanche</string>
+				<string>Avalanche</string>
+			</array>
+		</array>
+	</array>
+</array>
+</plist>

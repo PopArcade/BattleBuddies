@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45AFCFD919FD4E4E0044381B /* BBBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFD819FD4E4E0044381B /* BBBuddy.m */; };
+		45AFCFDC19FD50750044381B /* BBAttack.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFDB19FD50750044381B /* BBAttack.m */; };
+		45AFCFDF19FD535F0044381B /* BBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFDE19FD535F0044381B /* BBConstants.m */; };
+		45AFCFE219FD58E00044381B /* BBBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFE119FD58E00044381B /* BBBody.m */; };
+		45AFCFE519FD6A4C0044381B /* BaseAttributes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45AFCFE419FD6A4C0044381B /* BaseAttributes.plist */; };
+		45AFCFE819FD78EF0044381B /* BBDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFE719FD78EF0044381B /* BBDatabase.m */; };
+		45AFCFEA19FD920B0044381B /* NameSuffix.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45AFCFE919FD920B0044381B /* NameSuffix.plist */; };
+		45AFCFF219FDC0D40044381B /* AttackSyllabus.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45AFCFF119FDC0D40044381B /* AttackSyllabus.plist */; };
+		45AFCFF619FDCC700044381B /* Attacks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45AFCFF519FDCC700044381B /* Attacks.plist */; };
 		EF92547319FD3A7800FFA3F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92547219FD3A7800FFA3F8 /* main.m */; };
 		EF92547619FD3A7800FFA3F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92547519FD3A7800FFA3F8 /* AppDelegate.m */; };
 		EF92547919FD3A7800FFA3F8 /* BBMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92547819FD3A7800FFA3F8 /* BBMainMenuViewController.m */; };
@@ -28,6 +37,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		45AFCFD719FD4E4E0044381B /* BBBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBuddy.h; sourceTree = "<group>"; };
+		45AFCFD819FD4E4E0044381B /* BBBuddy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBuddy.m; sourceTree = "<group>"; };
+		45AFCFDA19FD50750044381B /* BBAttack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAttack.h; sourceTree = "<group>"; };
+		45AFCFDB19FD50750044381B /* BBAttack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBAttack.m; sourceTree = "<group>"; };
+		45AFCFDD19FD535F0044381B /* BBConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBConstants.h; sourceTree = "<group>"; };
+		45AFCFDE19FD535F0044381B /* BBConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBConstants.m; sourceTree = "<group>"; };
+		45AFCFE019FD58E00044381B /* BBBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBody.h; sourceTree = "<group>"; };
+		45AFCFE119FD58E00044381B /* BBBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBody.m; sourceTree = "<group>"; };
+		45AFCFE419FD6A4C0044381B /* BaseAttributes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BaseAttributes.plist; sourceTree = "<group>"; };
+		45AFCFE619FD78EF0044381B /* BBDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBDatabase.h; sourceTree = "<group>"; };
+		45AFCFE719FD78EF0044381B /* BBDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBDatabase.m; sourceTree = "<group>"; };
+		45AFCFE919FD920B0044381B /* NameSuffix.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NameSuffix.plist; sourceTree = "<group>"; };
+		45AFCFF119FDC0D40044381B /* AttackSyllabus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AttackSyllabus.plist; sourceTree = "<group>"; };
+		45AFCFF519FDCC700044381B /* Attacks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Attacks.plist; sourceTree = "<group>"; };
 		EF92546D19FD3A7800FFA3F8 /* BattleBuddies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BattleBuddies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF92547119FD3A7800FFA3F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF92547219FD3A7800FFA3F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -64,6 +87,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45AFCFD619FD4E110044381B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				45AFCFDD19FD535F0044381B /* BBConstants.h */,
+				45AFCFDE19FD535F0044381B /* BBConstants.m */,
+				45AFCFD719FD4E4E0044381B /* BBBuddy.h */,
+				45AFCFD819FD4E4E0044381B /* BBBuddy.m */,
+				45AFCFDA19FD50750044381B /* BBAttack.h */,
+				45AFCFDB19FD50750044381B /* BBAttack.m */,
+				45AFCFE019FD58E00044381B /* BBBody.h */,
+				45AFCFE119FD58E00044381B /* BBBody.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		45AFCFE319FD6A1E0044381B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				45AFCFF519FDCC700044381B /* Attacks.plist */,
+				45AFCFF119FDC0D40044381B /* AttackSyllabus.plist */,
+				45AFCFE419FD6A4C0044381B /* BaseAttributes.plist */,
+				45AFCFE919FD920B0044381B /* NameSuffix.plist */,
+				45AFCFE619FD78EF0044381B /* BBDatabase.h */,
+				45AFCFE719FD78EF0044381B /* BBDatabase.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		EF92546419FD3A7800FFA3F8 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +136,8 @@
 		EF92546F19FD3A7800FFA3F8 /* BattleBuddies */ = {
 			isa = PBXGroup;
 			children = (
+				45AFCFE319FD6A1E0044381B /* Data */,
+				45AFCFD619FD4E110044381B /* Model */,
 				EF92547419FD3A7800FFA3F8 /* AppDelegate.h */,
 				EF92547519FD3A7800FFA3F8 /* AppDelegate.m */,
 				EF92547719FD3A7800FFA3F8 /* BBMainMenuViewController.h */,
@@ -207,7 +260,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF92548119FD3A7800FFA3F8 /* LaunchScreen.xib in Resources */,
+				45AFCFF219FDC0D40044381B /* AttackSyllabus.plist in Resources */,
+				45AFCFEA19FD920B0044381B /* NameSuffix.plist in Resources */,
 				EF92547E19FD3A7800FFA3F8 /* Images.xcassets in Resources */,
+				45AFCFF619FDCC700044381B /* Attacks.plist in Resources */,
+				45AFCFE519FD6A4C0044381B /* BaseAttributes.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,10 +283,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF92547919FD3A7800FFA3F8 /* BBMainMenuViewController.m in Sources */,
+				45AFCFDF19FD535F0044381B /* BBConstants.m in Sources */,
 				EF92549819FD3B0400FFA3F8 /* BBMapViewController.m in Sources */,
+				45AFCFD919FD4E4E0044381B /* BBBuddy.m in Sources */,
 				EF92547619FD3A7800FFA3F8 /* AppDelegate.m in Sources */,
+				45AFCFE219FD58E00044381B /* BBBody.m in Sources */,
 				EF92547319FD3A7800FFA3F8 /* main.m in Sources */,
 				EF92549B19FD3B1700FFA3F8 /* BBBattleViewController.m in Sources */,
+				45AFCFE819FD78EF0044381B /* BBDatabase.m in Sources */,
+				45AFCFDC19FD50750044381B /* BBAttack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +408,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BattleBuddies/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -356,6 +419,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BattleBuddies/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -414,6 +478,7 @@
 				EF92549219FD3A7800FFA3F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF92549319FD3A7800FFA3F8 /* Build configuration list for PBXNativeTarget "BattleBuddiesTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +487,7 @@
 				EF92549519FD3A7800FFA3F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
