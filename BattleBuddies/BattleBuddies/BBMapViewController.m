@@ -141,14 +141,14 @@
 {
     BBItemListViewController *itemList = [[BBItemListViewController alloc] init];
     
-    [self presentViewController:itemList animated:YES completion:nil];
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:itemList] animated:YES completion:nil];
 }
 
 - (void)showBuddies
 {
     BBBuddyListViewController *buddyList = [[BBBuddyListViewController alloc] init];
     
-    [self presentViewController:buddyList animated:YES completion:nil];
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:buddyList] animated:YES completion:nil];
 }
 
 #pragma mark - BBMapTouchDelegate
