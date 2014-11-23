@@ -39,7 +39,7 @@
     BBMapViewController *mapViewController = [[BBMapViewController alloc] init];
     
     NSLog(@"Start Map Generator");
-    mapViewController.generator = [[BBMapGenerator alloc] initWithSize:CGSizeMake(1000.0, 1000.0)];
+    mapViewController.generator = [[BBMapGenerator alloc] initWithSize:CGSizeMake(200.0, 200.0)];
     
     [mapViewController.generator generateMap:^{
         NSLog(@"Finish Map Generator");

@@ -10,4 +10,6 @@
 
 @interface BBGridLayout : UICollectionViewLayout
 
+@property (nonatomic, readonly) CGSize itemSize;
+
 @end

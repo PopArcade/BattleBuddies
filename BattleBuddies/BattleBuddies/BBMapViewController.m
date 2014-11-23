@@ -46,6 +46,8 @@
 @property (nonatomic, strong) UIButton *itemsButton;
 @property (nonatomic, strong) UIButton *buddiesButton;
 
+@property (nonatomic, strong) UIImageView *mainCharacter;
+
 @end
 
 @implementation BBMapViewController
@@ -70,6 +72,32 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(8.0)-[items]" options:0 metrics:nil views:@{@"items": self.itemsButton, @"buddies": self.buddiesButton}]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(8.0)-[buddies]" options:0 metrics:nil views:@{@"items": self.itemsButton, @"buddies": self.buddiesButton}]];
     
+    
+    [self.view addSubview:self.mainCharacter];
+    
+    
+//    UIView *vertical = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.bounds) - 16.0, 0.0, 32.0, CGRectGetHeight(self.view.bounds))];
+//    [vertical setBackgroundColor:[[UIColor greenColor] colorWithAlphaComponent:0.5]];
+//    [self.view addSubview:vertical];
+//    
+//    UIView *horizontal = [[UIView alloc] initWithFrame:CGRectMake(0.0, CGRectGetMidY(self.view.bounds) - 16.0, CGRectGetWidth(self.view.bounds), 32.0)];
+//    [horizontal setBackgroundColor:[[UIColor blueColor] colorWithAlphaComponent:0.5]];
+//    [self.view addSubview:horizontal];
+    
+    
+    // Center the map
+    CGFloat width = CGRectGetWidth(self.view.bounds);
+    CGFloat height = CGRectGetHeight(self.view.bounds);
+    CGFloat itemSize = self.flowLayout.itemSize.width;
+    
+    CGFloat xRemainder = (int)width % (int)itemSize;
+    CGFloat xAdjustment = itemSize - (xRemainder / 2.0);
+    
+    CGFloat yRemainder = (int)height % (int)itemSize;
+    CGFloat yAdjustment = (itemSize - yRemainder) / 2.0;
+
+    
+    [self.collectionView setContentInset:UIEdgeInsetsMake(-(yAdjustment), -(xAdjustment), 0.0, 0.0)];
 
 //    NSMutableArray *columns = [NSMutableArray array];
 //    for (int x = 0; x < 2000; x++) {
@@ -79,7 +107,7 @@
 //        }
 //        [columns addObject:column];
 //    }
-    
+//    
 //    [self.upLeftDirection setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:1.0]];
 //    [self.upDirection setBackgroundColor:[[UIColor orangeColor] colorWithAlphaComponent:1.0]];
 //    [self.upRightDirection setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:1.0]];
@@ -90,7 +118,7 @@
 //    
 //    [self.rightDirection setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:1.0]];
 //    [self.leftDirection setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:1.0]];
-//    
+//
 //    [self.touchView setBackgroundColor:[[UIColor purpleColor] colorWithAlphaComponent:0.5]];
     
 }
@@ -181,6 +209,13 @@
 }
 
 #pragma mark - UICollectionViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[self.mainCharacter.superview convertPoint:self.mainCharacter.center toView:self.collectionView]];
+    
+    NSLog(@"%@",indexPath);
+}
 
 #pragma mark - Views
 
@@ -312,6 +347,19 @@
     return _buddiesButton;
 }
 
+- (UIImageView *)mainCharacter
+{
+    if (!_mainCharacter) {
+        _mainCharacter = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 32.0, 32.0)];
+        [_mainCharacter setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleBottomMargin];
+        [_mainCharacter setCenter:self.view.center];
+        
+        [_mainCharacter setBackgroundColor:[UIColor redColor]];
+    }
+    
+    return _mainCharacter;
+}
+
 #pragma mark - Directions
 
 - (void)goUpLeft:(id)sender
@@ -340,50 +388,53 @@
 
 - (void)goLeft:(id)sender
 {
-    NSInteger x = self.collectionView.contentOffset.x / 32.0;
-    NSInteger y = self.collectionView.contentOffset.y / 32.0;
+    NSInteger x = (self.collectionView.contentOffset.x - self.collectionView.contentInset.left) / 32.0;
+    NSInteger min = (CGRectGetWidth(self.view.bounds) / 2.0) / -32.0;
+    min += 1;
     
-    if (x <= 0) {
+    if (x <= min) {
         return;
     }
     
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:--x inSection:y] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+    [self.collectionView setContentOffset:CGPointMake(self.collectionView.contentOffset.x - 32.0, self.collectionView.contentOffset.y)];
 }
 
 - (void)goRight:(id)sender
 {
-    NSInteger x = self.collectionView.contentOffset.x / 32.0;
-    NSInteger y = self.collectionView.contentOffset.y / 32.0;
+    NSInteger x = (self.collectionView.contentOffset.x - self.collectionView.contentInset.left) / 32.0;
+    NSInteger max = [self numberOfSectionsInCollectionView:self.collectionView] - ((CGRectGetWidth(self.view.bounds) / 2.0) / 32.0);
+    max -= 1;
     
-    if (x >= [self numberOfSectionsInCollectionView:self.collectionView]) {
+    if (x >= max) {
         return;
     }
     
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:++x inSection:y] atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+    [self.collectionView setContentOffset:CGPointMake(self.collectionView.contentOffset.x + 32.0, self.collectionView.contentOffset.y)];
 }
 
 - (void)goUp:(id)sender
 {
-    NSInteger x = self.collectionView.contentOffset.x / 32.0;
-    NSInteger y = self.collectionView.contentOffset.y / 32.0;
+    NSInteger y = (self.collectionView.contentOffset.y - self.collectionView.contentInset.top) / 32.0;
+    NSInteger min = (CGRectGetHeight(self.view.bounds) / 2.0) / -32.0;
+    min += 1;
     
-    if (y <= 0) {
+    if (y <= min) {
         return;
     }
     
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:x inSection:--y] atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+    [self.collectionView setContentOffset:CGPointMake(self.collectionView.contentOffset.x, self.collectionView.contentOffset.y - 32.0)];
 }
 
 - (void)goDown:(id)sender
 {
-    NSInteger x = self.collectionView.contentOffset.x / 32.0;
-    NSInteger y = self.collectionView.contentOffset.y / 32.0;
+    NSInteger y = (self.collectionView.contentOffset.y - self.collectionView.contentInset.top) / 32.0;
+    NSInteger max = [self collectionView:self.collectionView numberOfItemsInSection:0] - ((CGRectGetHeight(self.view.bounds) / 2.0) / 32.0);
     
-    if (y >= [self collectionView:self.collectionView numberOfItemsInSection:0]) {
+    if (y >= max) {
         return;
     }
     
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:x inSection:++y] atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+    [self.collectionView setContentOffset:CGPointMake(self.collectionView.contentOffset.x, self.collectionView.contentOffset.y + 32.0)];
 }
 
 @end
