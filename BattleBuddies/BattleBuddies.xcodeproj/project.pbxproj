@@ -25,6 +25,10 @@
 		EF92549819FD3B0400FFA3F8 /* BBMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92549719FD3B0400FFA3F8 /* BBMapViewController.m */; };
 		EF92549B19FD3B1700FFA3F8 /* BBBattleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92549A19FD3B1700FFA3F8 /* BBBattleViewController.m */; };
 		EF92549E19FD44B800FFA3F8 /* BBGridLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = EF92549D19FD44B800FFA3F8 /* BBGridLayout.m */; };
+		EF99FB121A22330D0045E1BC /* BBItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF99FB111A22330D0045E1BC /* BBItemListViewController.m */; };
+		EF99FB151A2233210045E1BC /* BBBuddyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EF99FB141A2233210045E1BC /* BBBuddyListViewController.m */; };
+		EF99FB191A22333C0045E1BC /* BBItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF99FB181A22333C0045E1BC /* BBItemCell.m */; };
+		EF99FB1D1A2233530045E1BC /* BBBuddyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF99FB1C1A2233530045E1BC /* BBBuddyCell.m */; };
 		EFDE419319FD73650035B28B /* BBMapTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFDE419219FD73650035B28B /* BBMapTouchView.m */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +75,14 @@
 		EF92549A19FD3B1700FFA3F8 /* BBBattleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBattleViewController.m; sourceTree = "<group>"; };
 		EF92549C19FD44B800FFA3F8 /* BBGridLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBGridLayout.h; sourceTree = "<group>"; };
 		EF92549D19FD44B800FFA3F8 /* BBGridLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBGridLayout.m; sourceTree = "<group>"; };
+		EF99FB101A22330D0045E1BC /* BBItemListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBItemListViewController.h; sourceTree = "<group>"; };
+		EF99FB111A22330D0045E1BC /* BBItemListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBItemListViewController.m; sourceTree = "<group>"; };
+		EF99FB131A2233210045E1BC /* BBBuddyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBuddyListViewController.h; sourceTree = "<group>"; };
+		EF99FB141A2233210045E1BC /* BBBuddyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBuddyListViewController.m; sourceTree = "<group>"; };
+		EF99FB171A22333C0045E1BC /* BBItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBItemCell.h; sourceTree = "<group>"; };
+		EF99FB181A22333C0045E1BC /* BBItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBItemCell.m; sourceTree = "<group>"; };
+		EF99FB1B1A2233530045E1BC /* BBBuddyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBuddyCell.h; sourceTree = "<group>"; };
+		EF99FB1C1A2233530045E1BC /* BBBuddyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBuddyCell.m; sourceTree = "<group>"; };
 		EFDE419119FD73650035B28B /* BBMapTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMapTouchView.h; sourceTree = "<group>"; };
 		EFDE419219FD73650035B28B /* BBMapTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMapTouchView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,15 +154,11 @@
 		EF92546F19FD3A7800FFA3F8 /* BattleBuddies */ = {
 			isa = PBXGroup;
 			children = (
-				45AFCFE319FD6A1E0044381B /* Data */,
-				45AFCFD619FD4E110044381B /* Model */,
 				EF92547419FD3A7800FFA3F8 /* AppDelegate.h */,
 				EF92547519FD3A7800FFA3F8 /* AppDelegate.m */,
-				EF92547719FD3A7800FFA3F8 /* BBMainMenuViewController.h */,
-				EF92547819FD3A7800FFA3F8 /* BBMainMenuViewController.m */,
-				EF92549F19FD44BC00FFA3F8 /* Map */,
-				EF92549919FD3B1700FFA3F8 /* BBBattleViewController.h */,
-				EF92549A19FD3B1700FFA3F8 /* BBBattleViewController.m */,
+				45AFCFE319FD6A1E0044381B /* Data */,
+				45AFCFD619FD4E110044381B /* Model */,
+				EF99FB1E1A2233600045E1BC /* ViewControllers */,
 				EF92547D19FD3A7800FFA3F8 /* Images.xcassets */,
 				EF92547F19FD3A7800FFA3F8 /* LaunchScreen.xib */,
 				EF92547019FD3A7800FFA3F8 /* Supporting Files */,
@@ -195,6 +203,42 @@
 				EFDE419219FD73650035B28B /* BBMapTouchView.m */,
 			);
 			name = Map;
+			sourceTree = "<group>";
+		};
+		EF99FB161A2233270045E1BC /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				EF99FB101A22330D0045E1BC /* BBItemListViewController.h */,
+				EF99FB111A22330D0045E1BC /* BBItemListViewController.m */,
+				EF99FB171A22333C0045E1BC /* BBItemCell.h */,
+				EF99FB181A22333C0045E1BC /* BBItemCell.m */,
+			);
+			name = Items;
+			sourceTree = "<group>";
+		};
+		EF99FB1A1A2233420045E1BC /* Buddies */ = {
+			isa = PBXGroup;
+			children = (
+				EF99FB131A2233210045E1BC /* BBBuddyListViewController.h */,
+				EF99FB141A2233210045E1BC /* BBBuddyListViewController.m */,
+				EF99FB1B1A2233530045E1BC /* BBBuddyCell.h */,
+				EF99FB1C1A2233530045E1BC /* BBBuddyCell.m */,
+			);
+			name = Buddies;
+			sourceTree = "<group>";
+		};
+		EF99FB1E1A2233600045E1BC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				EF92547719FD3A7800FFA3F8 /* BBMainMenuViewController.h */,
+				EF92547819FD3A7800FFA3F8 /* BBMainMenuViewController.m */,
+				EF92549F19FD44BC00FFA3F8 /* Map */,
+				EF92549919FD3B1700FFA3F8 /* BBBattleViewController.h */,
+				EF92549A19FD3B1700FFA3F8 /* BBBattleViewController.m */,
+				EF99FB161A2233270045E1BC /* Items */,
+				EF99FB1A1A2233420045E1BC /* Buddies */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,12 +349,16 @@
 				EF92547919FD3A7800FFA3F8 /* BBMainMenuViewController.m in Sources */,
 				45AFCFDF19FD535F0044381B /* BBConstants.m in Sources */,
 				EF92549819FD3B0400FFA3F8 /* BBMapViewController.m in Sources */,
+				EF99FB1D1A2233530045E1BC /* BBBuddyCell.m in Sources */,
 				45AFCFD919FD4E4E0044381B /* BBBuddy.m in Sources */,
 				EF92547619FD3A7800FFA3F8 /* AppDelegate.m in Sources */,
 				45AFCFE219FD58E00044381B /* BBBody.m in Sources */,
 				EF92547319FD3A7800FFA3F8 /* main.m in Sources */,
+				EF99FB121A22330D0045E1BC /* BBItemListViewController.m in Sources */,
 				EF92549B19FD3B1700FFA3F8 /* BBBattleViewController.m in Sources */,
 				EFDE419319FD73650035B28B /* BBMapTouchView.m in Sources */,
+				EF99FB151A2233210045E1BC /* BBBuddyListViewController.m in Sources */,
+				EF99FB191A22333C0045E1BC /* BBItemCell.m in Sources */,
 				45AFCFF719FDCD160044381B /* BBAttack.m in Sources */,
 				EF92549E19FD44B800FFA3F8 /* BBGridLayout.m in Sources */,
 			);
