@@ -10,6 +10,10 @@
 
 @interface BBDatabase : NSObject
 
++ (NSArray *)itemsInBackpack;
++ (NSArray *)caughtBuddies;
++ (NSArray *)allBuddies;
+
 + (NSArray *)attributesArray;
 + (NSArray *)nameSuffixArray;
 + (NSDictionary *)attacksDictionary;

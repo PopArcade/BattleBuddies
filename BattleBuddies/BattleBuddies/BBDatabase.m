@@ -7,8 +7,29 @@
 //
 
 #import "BBDatabase.h"
+#import "BBItem.h"
 
 @implementation BBDatabase
+
+#pragma mark - items and buddies
+
+//TODO: Actually implement this....
++ (NSArray *)itemsInBackpack
+{
+    return @[[BBItem buddyBall], [BBItem potion], [BBItem potion]];
+}
+
++ (NSArray *)caughtBuddies
+{
+    return nil;
+}
+
++ (NSArray *)allBuddies
+{
+    return nil;
+}
+
+#pragma mark - data resources
 
 + (NSArray *)attributesArray
 {
