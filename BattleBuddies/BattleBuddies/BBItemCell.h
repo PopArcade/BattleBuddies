@@ -10,4 +10,7 @@
 
 @interface BBItemCell : UITableViewCell
 
+@property (strong, nonatomic) UILabel *itemName;
+@property (strong, nonatomic) UIImageView *itemImage;
+
 @end

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BBItemListViewController : UIViewController
+@interface BBItemListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) UITableView *itemBackPackTableView;
 
 @end

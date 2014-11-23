@@ -7,6 +7,7 @@
 //
 
 #import "BBItemCell.h"
+#import "BBItem.h"
 
 @implementation BBItemCell
 
@@ -18,6 +19,28 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+#pragma mark Views
+
+- (UIImageView *)itemImage
+{
+    if (!_itemImage) {
+        _itemImage = [[UIImageView alloc] initWithFrame:CGRectMake(40, 7, 50, 50)];
+        _itemImage.backgroundColor = [UIColor blackColor];
+        _itemName.autoresizingMask = YES;
+    }
+    return _itemImage;
+}
+
+- (UILabel *)itemName
+{
+    if (!_itemName) {
+        _itemName = [[UILabel alloc] initWithFrame:CGRectMake(100, 7, 250, 50)];
+        _itemName.backgroundColor = [UIColor whiteColor];
+        _itemName.autoresizingMask = YES;
+    }
+    return _itemName;
 }
 
 @end
