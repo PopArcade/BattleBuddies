@@ -38,6 +38,8 @@
 		EFCF81611A22352D00B5535D /* BBMapCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF815D1A22352D00B5535D /* BBMapCollectionViewCell.m */; };
 		EFCF81621A22352D00B5535D /* BBMapGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF815F1A22352D00B5535D /* BBMapGenerator.m */; };
 		EFCF81651A22587500B5535D /* BBBattlePresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF81641A22587500B5535D /* BBBattlePresentationController.m */; };
+		EFCF81691A22937500B5535D /* BBTriangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF81681A22937500B5535D /* BBTriangleView.m */; };
+		EFCF816C1A2299C500B5535D /* BBHealthBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF816B1A2299C500B5535D /* BBHealthBar.m */; };
 		EFDE419319FD73650035B28B /* BBMapTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFDE419219FD73650035B28B /* BBMapTouchView.m */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +110,10 @@
 		EFCF815F1A22352D00B5535D /* BBMapGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMapGenerator.m; sourceTree = "<group>"; };
 		EFCF81631A22587500B5535D /* BBBattlePresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBattlePresentationController.h; sourceTree = "<group>"; };
 		EFCF81641A22587500B5535D /* BBBattlePresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBattlePresentationController.m; sourceTree = "<group>"; };
+		EFCF81671A22937500B5535D /* BBTriangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTriangleView.h; sourceTree = "<group>"; };
+		EFCF81681A22937500B5535D /* BBTriangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBTriangleView.m; sourceTree = "<group>"; };
+		EFCF816A1A2299C500B5535D /* BBHealthBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBHealthBar.h; sourceTree = "<group>"; };
+		EFCF816B1A2299C500B5535D /* BBHealthBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBHealthBar.m; sourceTree = "<group>"; };
 		EFDE419119FD73650035B28B /* BBMapTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMapTouchView.h; sourceTree = "<group>"; };
 		EFDE419219FD73650035B28B /* BBMapTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMapTouchView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -274,14 +280,26 @@
 				EF92547719FD3A7800FFA3F8 /* BBMainMenuViewController.h */,
 				EF92547819FD3A7800FFA3F8 /* BBMainMenuViewController.m */,
 				EF92549F19FD44BC00FFA3F8 /* Map */,
-				EF92549919FD3B1700FFA3F8 /* BBBattleViewController.h */,
-				EF92549A19FD3B1700FFA3F8 /* BBBattleViewController.m */,
+				EFCF81661A22936800B5535D /* Battle */,
 				EFCF81631A22587500B5535D /* BBBattlePresentationController.h */,
 				EFCF81641A22587500B5535D /* BBBattlePresentationController.m */,
 				EF99FB161A2233270045E1BC /* Items */,
 				EF99FB1A1A2233420045E1BC /* Buddies */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		EFCF81661A22936800B5535D /* Battle */ = {
+			isa = PBXGroup;
+			children = (
+				EF92549919FD3B1700FFA3F8 /* BBBattleViewController.h */,
+				EF92549A19FD3B1700FFA3F8 /* BBBattleViewController.m */,
+				EFCF81671A22937500B5535D /* BBTriangleView.h */,
+				EFCF81681A22937500B5535D /* BBTriangleView.m */,
+				EFCF816A1A2299C500B5535D /* BBHealthBar.h */,
+				EFCF816B1A2299C500B5535D /* BBHealthBar.m */,
+			);
+			name = Battle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,12 +408,14 @@
 			files = (
 				45AFCFF819FDCD220044381B /* BBDatabase.m in Sources */,
 				EF92547919FD3A7800FFA3F8 /* BBMainMenuViewController.m in Sources */,
+				EFCF816C1A2299C500B5535D /* BBHealthBar.m in Sources */,
 				45AFCFDF19FD535F0044381B /* BBConstants.m in Sources */,
 				EF92549819FD3B0400FFA3F8 /* BBMapViewController.m in Sources */,
 				EF99FB1D1A2233530045E1BC /* BBBuddyCell.m in Sources */,
 				EFCF81611A22352D00B5535D /* BBMapCollectionViewCell.m in Sources */,
 				453203991A2255DE004A3E21 /* BBTwitterStuff.m in Sources */,
 				45AFCFD919FD4E4E0044381B /* BBBuddy.m in Sources */,
+				EFCF81691A22937500B5535D /* BBTriangleView.m in Sources */,
 				453203931A223458004A3E21 /* BBItem.m in Sources */,
 				EFCF81651A22587500B5535D /* BBBattlePresentationController.m in Sources */,
 				EF92547619FD3A7800FFA3F8 /* AppDelegate.m in Sources */,

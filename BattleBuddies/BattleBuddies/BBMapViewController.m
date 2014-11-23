@@ -22,10 +22,16 @@
 #import "BBBattleViewController.h"
 #import "BBBattlePresentationController.h"
 
+#import "BBTwitterStuff.h"
+#import "BBBuddy.h"
+
+
 @interface BBMapViewController () <UICollectionViewDataSource, UICollectionViewDelegate, BBMapTouchDelegate, UIViewControllerTransitioningDelegate>
 {
     NSDictionary *directionButtons;
     int tilesWalked;
+    
+    NSArray *availableBuddies;
 }
 
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -101,28 +107,32 @@
 
     
     [self.collectionView setContentInset:UIEdgeInsetsMake(-(yAdjustment), -(xAdjustment), 0.0, 0.0)];
-
-//    NSMutableArray *columns = [NSMutableArray array];
-//    for (int x = 0; x < 2000; x++) {
-//        NSMutableArray *column = [NSMutableArray array];
-//        for (int y = 0; y < 2000; y++) {
-//            [column addObject:[NSValue valueWithCGPoint:CGPointMake(x, y)]];
-//        }
-//        [columns addObject:column];
-//    }
-//    
-//    [self.upLeftDirection setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:1.0]];
-//    [self.upDirection setBackgroundColor:[[UIColor orangeColor] colorWithAlphaComponent:1.0]];
-//    [self.upRightDirection setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:1.0]];
-//    
-//    [self.downLeftDirection setBackgroundColor:[[UIColor blueColor] colorWithAlphaComponent:1.0]];
-//    [self.downDirection setBackgroundColor:[[UIColor greenColor] colorWithAlphaComponent:1.0]];
-//    [self.downRightDirection setBackgroundColor:[[UIColor blueColor] colorWithAlphaComponent:1.0]];
-//    
-//    [self.rightDirection setBackgroundColor:[[UIColor blackColor] colorWithAlphaComponent:1.0]];
-//    [self.leftDirection setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:1.0]];
-//
-//    [self.touchView setBackgroundColor:[[UIColor purpleColor] colorWithAlphaComponent:0.5]];
+    
+    // Load twitter buddies.
+    [[BBTwitterStuff sharedStuff] followerBuddySeedsWithCompletion:^(NSArray *buddies, NSError *error) {
+        
+        if (error) {
+            NSLog(@"Fucking Error: %@",error);
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:error.localizedFailureReason message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Sad Panda" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+                //
+            }]];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+        
+        NSMutableArray *_availableBuddies = [NSMutableArray array];
+        
+        [buddies enumerateObjectsUsingBlock:^(BBBuddySeed *seed, NSUInteger idx, BOOL *stop) {
+            BBBuddy *buddy = [BBBuddy buddyFromBuddySeed:seed atLevel:10];
+            
+            [_availableBuddies addObject:buddy];
+        }];
+        
+        availableBuddies = _availableBuddies.copy;
+        _availableBuddies = nil;
+        
+        NSLog(@"Buddyies Loaded: %@",[availableBuddies valueForKey:NSStringFromSelector(@selector(name))]);
+    }];
     
 }
 
@@ -136,6 +146,20 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+//    [self startBattleAgainstBuddy:nil];
+}
+
+- (void)startBattleAgainstBuddy:(BBBuddy *)opponent
+{
+    BBBattleViewController *battleView = [[BBBattleViewController alloc] init];
+    [battleView setOpponent:opponent];
+    
+    // Setup for Presentation
+    [battleView setModalPresentationStyle:UIModalPresentationCustom];
+    [battleView setTransitioningDelegate:self];
+    
+    [self presentViewController:battleView animated:YES completion:nil];
 }
 
 #pragma mark - Navigation
@@ -215,21 +239,18 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self.touchView cancelTouches];
     
-    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[self.mainCharacter.superview convertPoint:self.mainCharacter.center toView:self.collectionView]];
-    
-    NSLog(@"%@",indexPath);
+//    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[self.mainCharacter.superview convertPoint:self.mainCharacter.center toView:self.collectionView]];    
+//    NSLog(@"%@",indexPath);
     
     tilesWalked++;
     
-    if (tilesWalked > 10 && (arc4random() % 10) == 9) {
-        NSLog(@"Start THE FUCKING BATTLE");
-        BBBattleViewController *battleView = [[BBBattleViewController alloc] init];
-        [battleView setModalPresentationStyle:UIModalPresentationCustom];
-        [battleView setTransitioningDelegate:self];
+    if (availableBuddies.count && tilesWalked > 10 && (arc4random() % 10) == 9) {
+        [self.touchView cancelTouches];
         
-        [self presentViewController:battleView animated:YES completion:nil];
+        NSLog(@"Start THE FUCKING BATTLE");
+        
+        [self startBattleAgainstBuddy:availableBuddies[arc4random() % availableBuddies.count]];
     }
 }
 

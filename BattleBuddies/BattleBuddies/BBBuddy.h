@@ -18,6 +18,7 @@
 @property (nonatomic, strong, readonly) NSString *name;
 
 @property (nonatomic, strong, readonly) NSURL *faceImage;
+@property (nonatomic, strong, readonly) NSURL *bodyImage;
 
 @property (nonatomic, readonly) BBElement element;
 

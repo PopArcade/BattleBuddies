@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 #import "BBMainMenuViewController.h"
-#import "BBTwitterStuff.h"
-#import "BBBuddy.h"
 
 @interface AppDelegate ()
 
@@ -20,24 +18,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    [[BBTwitterStuff sharedStuff] followerBuddySeedsWithCompletion:^(NSArray *buddies, NSError *error) {
-        NSLog(@"TA DA");
-        
-        [buddies enumerateObjectsUsingBlock:^(BBBuddySeed *seed, NSUInteger idx, BOOL *stop) {
-            BBBuddy *buddy = [BBBuddy buddyFromBuddySeed:seed atLevel:10];
-            NSLog(@"%@", buddy);
-        }];
-    }];
-    
-//    [[BBTwitterStuff sharedStuff] friendBuddySeedsWithCompletion:^(NSArray *buddies, NSError *error) {
-//        NSLog(@"TA DA");
-//        
-//        [buddies enumerateObjectsUsingBlock:^(BBBuddySeed *seed, NSUInteger idx, BOOL *stop) {
-//            BBBuddy *buddy = [BBBuddy buddyFromBuddySeed:seed atLevel:10];
-//            NSLog(@"%@", buddy);
-//        }];
-//    }];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setBackgroundColor:[UIColor blackColor]];

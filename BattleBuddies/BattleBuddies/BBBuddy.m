@@ -26,6 +26,7 @@ NSInteger const kSecondEvolution = 35;
 @property (nonatomic, strong) NSString *uniqueIdentifier;
 
 @property (nonatomic, strong, readwrite) NSArray *names;
+@property (nonatomic, strong, readwrite) NSURL *bodyImage;
 
 @property (nonatomic, strong, readwrite) NSURL *faceImage;
 
@@ -299,6 +300,15 @@ NSInteger const kSecondEvolution = 35;
     NSUInteger avg = sum / 11;
     
     return avg;
+}
+
+- (NSURL *)bodyImage
+{
+    if (!_bodyImage) {
+        _bodyImage = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%li-%li",self.element,self.evolutionLevel] withExtension:@"png"];
+    }
+    
+    return _bodyImage;
 }
 
 #pragma mark - Description

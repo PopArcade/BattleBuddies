@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BBBuddy.h"
 
 @interface BBBattleViewController : UIViewController
+
+@property (nonatomic, strong) BBBuddy *opponent;
 
 @end

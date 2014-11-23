@@ -70,6 +70,8 @@ typedef void(^BBTwitterStuffLoadMoreCompletion)(NSString *cursor, NSError *error
                     SLRequest *twitterInfoRequest = [weakSelf twitterInfoRequestWithEARL:requestEARL twitterAccount:twitterAccount andCursor:cursor];
                     
                     [twitterInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                        
+                        NSLog(@"TwitResponse: %@",urlResponse.allHeaderFields);
                         dispatch_async(dispatch_get_main_queue(), ^{
                             if ([urlResponse statusCode] == 429) {
                                 completion(weakSelf.buddySeeds.copy, [NSError errorWithDomain:@"idunno" code:0 userInfo:@{NSLocalizedDescriptionKey: @"Rate Limit Reached"}]);
@@ -84,6 +86,8 @@ typedef void(^BBTwitterStuffLoadMoreCompletion)(NSString *cursor, NSError *error
                                 NSError *error = nil;
                                 NSDictionary *TWData = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
                                 NSArray *users = TWData[@"users"];
+                                
+                                NSLog(@"Users: %li",users.count);
                                 
                                 [users enumerateObjectsUsingBlock:^(NSDictionary *userDict, NSUInteger idx, BOOL *stop) {
                                     NSString *name = userDict[@"name"];
