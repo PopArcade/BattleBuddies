@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "BBMainMenuViewController.h"
-#import "BBTwitterStuff.h"
 #import "BBDatabase.h"
 
 @interface AppDelegate ()
@@ -27,28 +26,6 @@
         [BBDatabase addItemToBackpack:[BBItem potion]];
         [BBDatabase addItemToBackpack:[BBItem potion]];
     }
-    
-    [[BBTwitterStuff sharedStuff] followerBuddySeedsWithCompletion:^(NSArray *buddySeeds, NSError *error) {
-        if (error) {
-            NSLog(@"ERROR!!!\n%@", error);
-        }
-        if (buddySeeds) {
-            NSLog(@"updating all buddies with followers");
-            NSSet *buddySeedSet = [NSSet setWithArray:buddySeeds];
-            [BBDatabase updateAllBuddiesWithBuddies:buddySeedSet];
-        }
-    }];
-    
-    [[BBTwitterStuff sharedStuff] friendBuddySeedsWithCompletion:^(NSArray *buddySeeds, NSError *error) {
-        if (error) {
-            NSLog(@"ERROR!!!\n%@", error);
-        }
-        if (buddySeeds) {
-            NSLog(@"updating all buddies with friends");
-            NSSet *buddySeedSet = [NSSet setWithArray:buddySeeds];
-            [BBDatabase updateAllBuddiesWithBuddies:buddySeedSet];
-        }
-    }];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setBackgroundColor:[UIColor blackColor]];

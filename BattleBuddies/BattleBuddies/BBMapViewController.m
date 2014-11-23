@@ -23,6 +23,7 @@
 #import "BBBattlePresentationController.h"
 
 #import "BBTwitterStuff.h"
+#import "BBDatabase.h"
 #import "BBBuddy.h"
 
 
@@ -94,46 +95,68 @@
 //    [self.view addSubview:horizontal];
     
     
-    // Center the map
-    CGFloat width = CGRectGetWidth(self.view.bounds);
-    CGFloat height = CGRectGetHeight(self.view.bounds);
-    CGFloat itemSize = self.flowLayout.itemSize.width;
+    [self centerTheMapForSize:self.view.bounds.size];
     
-    CGFloat xRemainder = (int)width % (int)itemSize;
-    CGFloat xAdjustment = itemSize - (xRemainder / 2.0);
     
-    CGFloat yRemainder = (int)height % (int)itemSize;
-    CGFloat yAdjustment = (itemSize - yRemainder) / 2.0;
-
-    
-    [self.collectionView setContentInset:UIEdgeInsetsMake(-(yAdjustment), -(xAdjustment), 0.0, 0.0)];
     
     // Load twitter buddies.
-    [[BBTwitterStuff sharedStuff] followerBuddySeedsWithCompletion:^(NSArray *buddies, NSError *error) {
-        
+    __block BOOL followers;
+    __block BOOL friends;
+    [[BBTwitterStuff sharedStuff] followerBuddySeedsWithCompletion:^(NSArray *buddySeeds, NSError *error) {
         if (error) {
-            NSLog(@"Fucking Error: %@",error);
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:error.localizedFailureReason message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-            [alertController addAction:[UIAlertAction actionWithTitle:@"Sad Panda" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-                //
-            }]];
-            [self presentViewController:alertController animated:YES completion:nil];
+            NSLog(@"ERROR!!!\n%@", error);
+        }
+        if (buddySeeds) {
+            NSLog(@"updating all buddies with followers");
+            NSSet *buddySeedSet = [NSSet setWithArray:buddySeeds];
+            [BBDatabase updateAllBuddiesWithBuddies:buddySeedSet];
         }
         
-        NSMutableArray *_availableBuddies = [NSMutableArray array];
+        followers = YES;
         
-        [buddies enumerateObjectsUsingBlock:^(BBBuddySeed *seed, NSUInteger idx, BOOL *stop) {
-            BBBuddy *buddy = [BBBuddy buddyFromBuddySeed:seed atLevel:10];
+        if (followers && friends) {
+            NSMutableArray *_availableBuddies = [NSMutableArray array];
             
-            [_availableBuddies addObject:buddy];
-        }];
-        
-        availableBuddies = _availableBuddies.copy;
-        _availableBuddies = nil;
-        
-        NSLog(@"Buddyies Loaded: %@",[availableBuddies valueForKey:NSStringFromSelector(@selector(name))]);
+            [[BBDatabase allBuddies] enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+                BBBuddy *buddy = [BBBuddy buddyFromBuddySeed:obj atLevel:10];
+                
+                [_availableBuddies addObject:buddy];
+            }];
+            
+            availableBuddies = _availableBuddies.copy;
+            _availableBuddies = nil;
+            
+            NSLog(@"Buddyies Loaded: %@",[availableBuddies valueForKey:NSStringFromSelector(@selector(name))]);
+        }
     }];
     
+    [[BBTwitterStuff sharedStuff] friendBuddySeedsWithCompletion:^(NSArray *buddySeeds, NSError *error) {
+        if (error) {
+            NSLog(@"ERROR!!!\n%@", error);
+        }
+        if (buddySeeds) {
+            NSLog(@"updating all buddies with friends");
+            NSSet *buddySeedSet = [NSSet setWithArray:buddySeeds];
+            [BBDatabase updateAllBuddiesWithBuddies:buddySeedSet];
+        }
+        
+        friends = YES;
+        
+        if (followers && friends) {
+            NSMutableArray *_availableBuddies = [NSMutableArray array];
+            
+            [[BBDatabase allBuddies] enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+                BBBuddy *buddy = [BBBuddy buddyFromBuddySeed:obj atLevel:10];
+                
+                [_availableBuddies addObject:buddy];
+            }];
+            
+            availableBuddies = _availableBuddies.copy;
+            _availableBuddies = nil;
+            
+            NSLog(@"Buddyies Loaded: %@",[availableBuddies valueForKey:NSStringFromSelector(@selector(name))]);
+        }
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -150,6 +173,13 @@
 //    [self startBattleAgainstBuddy:nil];
 }
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    [self centerTheMapForSize:size];
+}
+
 - (void)startBattleAgainstBuddy:(BBBuddy *)opponent
 {
     BBBattleViewController *battleView = [[BBBattleViewController alloc] init];
@@ -160,6 +190,23 @@
     [battleView setTransitioningDelegate:self];
     
     [self presentViewController:battleView animated:YES completion:nil];
+}
+
+- (void)centerTheMapForSize:(CGSize)size
+{
+    // Center the map
+    CGFloat width = size.width;
+    CGFloat height = size.height;
+    CGFloat itemSize = self.flowLayout.itemSize.width;
+    
+    CGFloat xRemainder = (int)width % (int)itemSize;
+    CGFloat xAdjustment = itemSize - (xRemainder / 2.0);
+    
+    CGFloat yRemainder = (int)height % (int)itemSize;
+    CGFloat yAdjustment = (itemSize - yRemainder) / 2.0;
+    
+    
+    [self.collectionView setContentInset:UIEdgeInsetsMake(-(yAdjustment), -(xAdjustment), 0.0, 0.0)];
 }
 
 #pragma mark - Navigation

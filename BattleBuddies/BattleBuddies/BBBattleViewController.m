@@ -69,10 +69,10 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[enemy]-(8.0)-|" options:0 metrics:nil views:@{@"enemy" : self.enemyBuddyImageView}]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(8.0)-[enemy]" options:0 metrics:nil views:@{@"enemy" : self.enemyBuddyImageView}]];
     
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.playerBuddyImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:0.5 constant:1.0]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.playerBuddyImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:0.5 constant:1.0]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.enemyBuddyImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:0.5 constant:1.0]];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.enemyBuddyImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:0.5 constant:1.0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.playerBuddyImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:0.4 constant:1.0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.playerBuddyImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:0.4 constant:1.0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.enemyBuddyImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:0.4 constant:1.0]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.enemyBuddyImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:0.4 constant:1.0]];
 
     
     // Setup GTFO Button
