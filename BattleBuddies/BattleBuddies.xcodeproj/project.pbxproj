@@ -33,6 +33,7 @@
 		EFCF81601A22352D00B5535D /* BBMapAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF815B1A22352D00B5535D /* BBMapAtlas.m */; };
 		EFCF81611A22352D00B5535D /* BBMapCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF815D1A22352D00B5535D /* BBMapCollectionViewCell.m */; };
 		EFCF81621A22352D00B5535D /* BBMapGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF815F1A22352D00B5535D /* BBMapGenerator.m */; };
+		EFCF81651A22587500B5535D /* BBBattlePresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF81641A22587500B5535D /* BBBattlePresentationController.m */; };
 		EFDE419319FD73650035B28B /* BBMapTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFDE419219FD73650035B28B /* BBMapTouchView.m */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +96,8 @@
 		EFCF815D1A22352D00B5535D /* BBMapCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMapCollectionViewCell.m; sourceTree = "<group>"; };
 		EFCF815E1A22352D00B5535D /* BBMapGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMapGenerator.h; sourceTree = "<group>"; };
 		EFCF815F1A22352D00B5535D /* BBMapGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMapGenerator.m; sourceTree = "<group>"; };
+		EFCF81631A22587500B5535D /* BBBattlePresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBattlePresentationController.h; sourceTree = "<group>"; };
+		EFCF81641A22587500B5535D /* BBBattlePresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBattlePresentationController.m; sourceTree = "<group>"; };
 		EFDE419119FD73650035B28B /* BBMapTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMapTouchView.h; sourceTree = "<group>"; };
 		EFDE419219FD73650035B28B /* BBMapTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMapTouchView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -255,6 +258,8 @@
 				EF92549F19FD44BC00FFA3F8 /* Map */,
 				EF92549919FD3B1700FFA3F8 /* BBBattleViewController.h */,
 				EF92549A19FD3B1700FFA3F8 /* BBBattleViewController.m */,
+				EFCF81631A22587500B5535D /* BBBattlePresentationController.h */,
+				EFCF81641A22587500B5535D /* BBBattlePresentationController.m */,
 				EF99FB161A2233270045E1BC /* Items */,
 				EF99FB1A1A2233420045E1BC /* Buddies */,
 			);
@@ -373,6 +378,7 @@
 				EFCF81611A22352D00B5535D /* BBMapCollectionViewCell.m in Sources */,
 				45AFCFD919FD4E4E0044381B /* BBBuddy.m in Sources */,
 				453203931A223458004A3E21 /* BBItem.m in Sources */,
+				EFCF81651A22587500B5535D /* BBBattlePresentationController.m in Sources */,
 				EF92547619FD3A7800FFA3F8 /* AppDelegate.m in Sources */,
 				45AFCFE219FD58E00044381B /* BBBody.m in Sources */,
 				EF92547319FD3A7800FFA3F8 /* main.m in Sources */,

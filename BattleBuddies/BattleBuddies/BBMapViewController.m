@@ -19,10 +19,13 @@
 #import "BBItemListViewController.h"
 #import "BBBuddyListViewController.h"
 
+#import "BBBattleViewController.h"
+#import "BBBattlePresentationController.h"
 
-@interface BBMapViewController () <UICollectionViewDataSource, UICollectionViewDelegate, BBMapTouchDelegate>
+@interface BBMapViewController () <UICollectionViewDataSource, UICollectionViewDelegate, BBMapTouchDelegate, UIViewControllerTransitioningDelegate>
 {
     NSDictionary *directionButtons;
+    int tilesWalked;
 }
 
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -212,9 +215,22 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    [self.touchView cancelTouches];
+    
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[self.mainCharacter.superview convertPoint:self.mainCharacter.center toView:self.collectionView]];
     
     NSLog(@"%@",indexPath);
+    
+    tilesWalked++;
+    
+    if (tilesWalked > 10 && (arc4random() % 10) == 9) {
+        NSLog(@"Start THE FUCKING BATTLE");
+        BBBattleViewController *battleView = [[BBBattleViewController alloc] init];
+        [battleView setModalPresentationStyle:UIModalPresentationCustom];
+        [battleView setTransitioningDelegate:self];
+        
+        [self presentViewController:battleView animated:YES completion:nil];
+    }
 }
 
 #pragma mark - Views
@@ -435,6 +451,13 @@
     }
     
     [self.collectionView setContentOffset:CGPointMake(self.collectionView.contentOffset.x, self.collectionView.contentOffset.y + 32.0)];
+}
+
+#pragma mark - UIViewControllerTransitioningDelegate
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+{
+    return [[BBBattlePresentationController alloc] init];
 }
 
 @end

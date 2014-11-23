@@ -36,6 +36,12 @@
     }
 }
 
+- (void)cancelTouches
+{
+    [self.repeatTimer invalidate];
+    self.repeatTimer = nil;
+}
+
 #pragma mark - Touch Handling
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

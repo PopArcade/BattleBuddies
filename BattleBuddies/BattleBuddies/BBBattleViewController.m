@@ -17,6 +17,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.view setBackgroundColor:[UIColor redColor]];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, 256.0, 48.0)];
+    [label setCenter:self.view.center];
+    [label setAutoresizingMask:UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleBottomMargin];
+    [label setTextAlignment:NSTextAlignmentCenter];
+    [label setFont:[UIFont boldSystemFontOfSize:44.0]];
+    [label setTextColor:[UIColor whiteColor]];
+    [label setText:@"BATTLE!!"];
+    [self.view addSubview:label];
 }
 
 - (void)didReceiveMemoryWarning {

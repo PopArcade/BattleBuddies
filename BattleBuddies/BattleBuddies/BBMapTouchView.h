@@ -24,4 +24,6 @@
 
 @property (nonatomic, readonly) CGPoint locationOfTouch;
 
+- (void)cancelTouches;
+
 @end
