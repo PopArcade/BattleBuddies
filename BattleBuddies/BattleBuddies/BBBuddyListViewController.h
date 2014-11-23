@@ -10,4 +10,6 @@
 
 @interface BBBuddyListViewController : UIViewController
 
+@property (strong, nonatomic) UITableView *buddyListTableView;
+
 @end

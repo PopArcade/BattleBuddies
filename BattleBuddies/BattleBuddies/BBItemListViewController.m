@@ -75,6 +75,17 @@
 
 #pragma mark UITableViewDelegate
 
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    BBItem *item = [[BBDatabase itemsInBackpack] objectAtIndex:indexPath.row];
+    if(item == nil) {
+        NSLog(@"shiiiiiiiit");
+    }
+    else {
+        NSLog(@"success!");
+        NSLog(@"Item is: %@", item);
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 64.0;
 }

@@ -19,6 +19,16 @@
     // Do any additional setup after loading the view.
 }
 
+#pragma mark Views
+
+- (UITableView *)buddyListTableView
+{
+    if (_buddyListTableView) {
+        _buddyListTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    }
+    return _buddyListTableView;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
