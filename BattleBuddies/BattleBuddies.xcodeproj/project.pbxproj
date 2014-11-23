@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		453203931A223458004A3E21 /* BBItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 453203921A223458004A3E21 /* BBItem.m */; };
+		453203961A225419004A3E21 /* BBBuddySeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 453203951A225419004A3E21 /* BBBuddySeed.m */; };
+		453203991A2255DE004A3E21 /* BBTwitterStuff.m in Sources */ = {isa = PBXBuildFile; fileRef = 453203981A2255DE004A3E21 /* BBTwitterStuff.m */; };
+		4532039B1A225759004A3E21 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4532039A1A225759004A3E21 /* Accounts.framework */; };
+		4532039D1A225760004A3E21 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4532039C1A225760004A3E21 /* Social.framework */; };
 		45AFCFD919FD4E4E0044381B /* BBBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFD819FD4E4E0044381B /* BBBuddy.m */; };
 		45AFCFDF19FD535F0044381B /* BBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFDE19FD535F0044381B /* BBConstants.m */; };
 		45AFCFE219FD58E00044381B /* BBBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFE119FD58E00044381B /* BBBody.m */; };
@@ -50,6 +54,12 @@
 /* Begin PBXFileReference section */
 		453203911A223458004A3E21 /* BBItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBItem.h; sourceTree = "<group>"; };
 		453203921A223458004A3E21 /* BBItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBItem.m; sourceTree = "<group>"; };
+		453203941A225419004A3E21 /* BBBuddySeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBuddySeed.h; sourceTree = "<group>"; };
+		453203951A225419004A3E21 /* BBBuddySeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBuddySeed.m; sourceTree = "<group>"; };
+		453203971A2255DE004A3E21 /* BBTwitterStuff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBTwitterStuff.h; sourceTree = "<group>"; };
+		453203981A2255DE004A3E21 /* BBTwitterStuff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBTwitterStuff.m; sourceTree = "<group>"; };
+		4532039A1A225759004A3E21 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		4532039C1A225760004A3E21 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		45AFCFD719FD4E4E0044381B /* BBBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBuddy.h; sourceTree = "<group>"; };
 		45AFCFD819FD4E4E0044381B /* BBBuddy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBuddy.m; sourceTree = "<group>"; };
 		45AFCFDA19FD50750044381B /* BBAttack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAttack.h; sourceTree = "<group>"; };
@@ -107,6 +117,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4532039D1A225760004A3E21 /* Social.framework in Frameworks */,
+				4532039B1A225759004A3E21 /* Accounts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +145,8 @@
 				45AFCFE119FD58E00044381B /* BBBody.m */,
 				453203911A223458004A3E21 /* BBItem.h */,
 				453203921A223458004A3E21 /* BBItem.m */,
+				453203941A225419004A3E21 /* BBBuddySeed.h */,
+				453203951A225419004A3E21 /* BBBuddySeed.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -146,6 +160,8 @@
 				45AFCFE919FD920B0044381B /* NameSuffix.plist */,
 				45AFCFE619FD78EF0044381B /* BBDatabase.h */,
 				45AFCFE719FD78EF0044381B /* BBDatabase.m */,
+				453203971A2255DE004A3E21 /* BBTwitterStuff.h */,
+				453203981A2255DE004A3E21 /* BBTwitterStuff.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -153,6 +169,8 @@
 		EF92546419FD3A7800FFA3F8 = {
 			isa = PBXGroup;
 			children = (
+				4532039C1A225760004A3E21 /* Social.framework */,
+				4532039A1A225759004A3E21 /* Accounts.framework */,
 				EF92546F19FD3A7800FFA3F8 /* BattleBuddies */,
 				EF92548919FD3A7800FFA3F8 /* BattleBuddiesTests */,
 				EF92546E19FD3A7800FFA3F8 /* Products */,
@@ -376,6 +394,7 @@
 				EF92549819FD3B0400FFA3F8 /* BBMapViewController.m in Sources */,
 				EF99FB1D1A2233530045E1BC /* BBBuddyCell.m in Sources */,
 				EFCF81611A22352D00B5535D /* BBMapCollectionViewCell.m in Sources */,
+				453203991A2255DE004A3E21 /* BBTwitterStuff.m in Sources */,
 				45AFCFD919FD4E4E0044381B /* BBBuddy.m in Sources */,
 				453203931A223458004A3E21 /* BBItem.m in Sources */,
 				EFCF81651A22587500B5535D /* BBBattlePresentationController.m in Sources */,
@@ -390,6 +409,7 @@
 				EF99FB151A2233210045E1BC /* BBBuddyListViewController.m in Sources */,
 				EF99FB191A22333C0045E1BC /* BBItemCell.m in Sources */,
 				45AFCFF719FDCD160044381B /* BBAttack.m in Sources */,
+				453203961A225419004A3E21 /* BBBuddySeed.m in Sources */,
 				EF92549E19FD44B800FFA3F8 /* BBGridLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

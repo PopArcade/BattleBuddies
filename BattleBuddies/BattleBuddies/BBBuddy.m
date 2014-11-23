@@ -23,6 +23,8 @@ NSInteger const kSecondEvolution = 35;
 
 @interface BBBuddy ()
 
+@property (nonatomic, strong) NSString *uniqueIdentifier;
+
 @property (nonatomic, strong, readwrite) NSArray *names;
 
 @property (nonatomic, strong, readwrite) NSURL *faceImage;
@@ -118,6 +120,16 @@ NSInteger const kSecondEvolution = 35;
 + (instancetype)buddyFromUniqueIdentifier:(NSString *)uniqueIdentifier name:(NSString *)name imageURL:(NSURL *)imageURL level:(NSUInteger)level
 {
     return [[[self class] alloc] initFromUniqueIdentifier:uniqueIdentifier name:name imageURL:imageURL level:level];
+}
+
++ (instancetype)buddyFromBuddySeed:(BBBuddySeed *)buddySeed atLevel:(NSUInteger)level
+{
+    return [[[self class] alloc] initFromUniqueIdentifier:buddySeed.screenName name:buddySeed.name imageURL:buddySeed.imageURL level:level];
+}
+
+- (void)setUpBaseStatsWithUniqueIdentifier:(NSString *)uniqueIdentifier
+{
+    
 }
 
 #pragma upgrading
