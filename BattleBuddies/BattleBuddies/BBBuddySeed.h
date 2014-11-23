@@ -9,7 +9,7 @@
 // I don't know why the fuck this is called Buddy Seed.  Jacab made it up.  This is like a stub for your twitter buddies
 #import <Foundation/Foundation.h>
 
-@interface BBBuddySeed : NSObject
+@interface BBBuddySeed : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *screenName;

@@ -18,6 +18,14 @@ NSString * const kBBHealthKey = @"health";
 NSString * const kBBSpeedKey = @"speed";
 NSString * const kBBAgilityKey = @"agility";
 
+NSString * const BBBuddyEncodingKeyUniqueID = @"uniqueID";
+NSString * const BBBuddyEncodingKeyNames = @"names";
+NSString * const BBBuddyEncodingKeyLevel = @"level";
+NSString * const BBBuddyEncodingKeyExperience = @"experience";
+NSString * const BBBuddyEncodingKeyStatus = @"status";
+NSString * const BBBuddyEncodingKeyHealth = @"health";
+NSString * const BBBuddyEncodingKeyFaceImage = @"faceimage";
+
 NSInteger const kFirstEvolution = 15;
 NSInteger const kSecondEvolution = 35;
 
@@ -133,6 +141,39 @@ NSInteger const kSecondEvolution = 35;
     }
     
     _learnableAttacks = mutableAttackArray.copy;
+}
+
+#pragma mark - NSCoding
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    
+    if (self) {
+        _uniqueIdentifier = [aDecoder decodeObjectForKey:BBBuddyEncodingKeyUniqueID];
+        _names = [aDecoder decodeObjectForKey:BBBuddyEncodingKeyNames];
+        _level = [[aDecoder decodeObjectForKey:BBBuddyEncodingKeyLevel] integerValue];
+        _evolutionLevel = (_level < kFirstEvolution ? 0 : (_level < kSecondEvolution ? 1 : 2));
+        _experience = [[aDecoder decodeObjectForKey:BBBuddyEncodingKeyExperience] integerValue];
+        _status = [[aDecoder decodeObjectForKey:BBBuddyEncodingKeyStatus] integerValue];
+        _health = [aDecoder decodeObjectForKey:BBBuddyEncodingKeyHealth];
+        _faceImage = [aDecoder decodeObjectForKey:BBBuddyEncodingKeyFaceImage];
+        
+        [self setUpBaseStatsWithUniqueIdentifier:_uniqueIdentifier];
+    }
+    
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.uniqueIdentifier forKey:BBBuddyEncodingKeyUniqueID];
+    [aCoder encodeObject:self.names forKey:BBBuddyEncodingKeyNames];
+    [aCoder encodeObject:@(self.level) forKey:BBBuddyEncodingKeyLevel];
+    [aCoder encodeObject:@(self.experience) forKey:BBBuddyEncodingKeyExperience];
+    [aCoder encodeObject:@(self.status) forKey:BBBuddyEncodingKeyStatus];
+    [aCoder encodeObject:self.health forKey:BBBuddyEncodingKeyHealth];
+    [aCoder encodeObject:self.faceImage forKey:BBBuddyEncodingKeyFaceImage];
 }
 
 #pragma upgrading

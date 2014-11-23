@@ -1013,7 +1013,7 @@
 	<key>Taint Kick</key>
 	<dict>
 		<key>name</key>
-		<string>Tait Kick</string>
+		<string>Taint Kick</string>
 		<key>element</key>
 		<integer>10</integer>
 		<key>special</key>

@@ -7,12 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BBBuddy.h"
+#import "BBItem.h"
 
 @interface BBDatabase : NSObject
 
 + (NSArray *)itemsInBackpack;
++ (void)addItemToBackpack:(BBItem *)item;
++ (void)removeItemFromBackpackAtIndex:(NSUInteger)index;
+
+/// Returns an array of Caught Buddies
 + (NSArray *)caughtBuddies;
-+ (NSArray *)allBuddies;
++ (void)addBuddyToCaughtBuddies:(BBBuddy *)buddy;
+
+/// Returns a Set of BuddySeeds
++ (NSSet *)allBuddies;
++ (void)updateAllBuddiesWithBuddies:(NSSet *)buddySeeds;
 
 + (NSArray *)attributesArray;
 + (NSArray *)nameSuffixArray;

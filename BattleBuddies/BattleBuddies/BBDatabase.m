@@ -7,26 +7,94 @@
 //
 
 #import "BBDatabase.h"
-#import "BBItem.h"
+
+NSString * const BBDatabaseUserDefaultKeyBackpack = @"BBBackpack";
+NSString * const BBDatabaseUserDefaultKeyCaughtBuddies = @"CaughtBBBuddies";
+NSString * const BBDatabaseUserDefaultKeyAllBuddies = @"AllBBBuddies";
 
 @implementation BBDatabase
 
 #pragma mark - items and buddies
 
-//TODO: Actually implement this....
 + (NSArray *)itemsInBackpack
 {
-    return @[[BBItem buddyBall], [BBItem potion], [BBItem potion]];
+    NSData *itemsData = [[NSUserDefaults standardUserDefaults] objectForKey:BBDatabaseUserDefaultKeyBackpack];
+    NSArray *items = itemsData ? [NSKeyedUnarchiver unarchiveObjectWithData:itemsData] : nil;
+    
+    return items ? items : [NSArray array];
+}
+
++ (void)addItemToBackpack:(BBItem *)item
+{
+    if (item) {
+        NSMutableArray *mutableBackpack = [[self itemsInBackpack] mutableCopy];
+        [mutableBackpack addObject:item];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:mutableBackpack.copy];
+        [[NSUserDefaults standardUserDefaults] setObject:data forKey:BBDatabaseUserDefaultKeyBackpack];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
++ (void)removeItemFromBackpackAtIndex:(NSUInteger)index
+{
+    NSMutableArray *mutableBackpack = [[self itemsInBackpack] mutableCopy];
+    
+    if (index >= mutableBackpack.count) {
+        NSLog(@"Index out of bounds");
+        return;
+    }
+    
+    [mutableBackpack removeObjectAtIndex:index];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:mutableBackpack.copy];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:BBDatabaseUserDefaultKeyBackpack];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (NSArray *)caughtBuddies
 {
-    return nil;
+    NSData *buddiesData = [[NSUserDefaults standardUserDefaults] objectForKey:BBDatabaseUserDefaultKeyCaughtBuddies];
+    NSArray *buddies = buddiesData ? [NSKeyedUnarchiver unarchiveObjectWithData:buddiesData] : nil;
+    
+    return buddies ? buddies : [NSArray array];
 }
 
-+ (NSArray *)allBuddies
++ (void)addBuddyToCaughtBuddies:(BBBuddy *)buddy
 {
-    return nil;
+    if (buddy) {
+        NSMutableArray *mutableBuddies = [[self caughtBuddies] mutableCopy];
+        [mutableBuddies addObject:buddy];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:mutableBuddies.copy];
+        [[NSUserDefaults standardUserDefaults] setObject:data forKey:BBDatabaseUserDefaultKeyCaughtBuddies];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+
++ (NSSet *)allBuddies
+{
+    NSData *buddiesData = [[NSUserDefaults standardUserDefaults] objectForKey:BBDatabaseUserDefaultKeyAllBuddies];
+    NSArray *buddiesArray = buddiesData ? [NSKeyedUnarchiver unarchiveObjectWithData:buddiesData] : [NSArray array];
+    NSSet *buddiesSet = [NSSet setWithArray:buddiesArray];
+    
+    return buddiesSet ? buddiesSet : [NSSet set];
+}
+
++ (void)updateAllBuddiesWithBuddies:(NSSet *)buddySeeds
+{
+    NSMutableSet *allBuddies = [[self allBuddies] mutableCopy];
+    
+    [buddySeeds enumerateObjectsUsingBlock:^(BBBuddySeed *seed, BOOL *stop) {
+        if (seed) {
+            if ([allBuddies containsObject:seed]) {
+                [allBuddies removeObject:seed];
+            }
+            [allBuddies addObject:seed];
+        }
+    }];
+    
+    NSArray *buddiesArray = [allBuddies allObjects];
+    NSData *buddiesData = [NSKeyedArchiver archivedDataWithRootObject:buddiesArray];
+    [[NSUserDefaults standardUserDefaults] setObject:buddiesData forKey:BBDatabaseUserDefaultKeyAllBuddies];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - data resources

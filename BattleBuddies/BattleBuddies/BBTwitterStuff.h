@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BBBuddySeed.h"
 
-typedef void(^BBTwitterStuffContactsCompletion)(NSArray *buddies, NSError *error);
+typedef void(^BBTwitterStuffContactsCompletion)(NSArray *buddySeeds, NSError *error);
 
 @interface BBTwitterStuff : NSObject
 

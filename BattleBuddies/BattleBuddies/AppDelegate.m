@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "BBMainMenuViewController.h"
+#import "BBTwitterStuff.h"
+#import "BBDatabase.h"
 
 @interface AppDelegate ()
 
@@ -18,7 +20,36 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+    // Stub out fake items if they don't have any
+    if ([[BBDatabase itemsInBackpack] count] == 0) {
+        [BBDatabase addItemToBackpack:[BBItem buddyBall]];
+        [BBDatabase addItemToBackpack:[BBItem potion]];
+        [BBDatabase addItemToBackpack:[BBItem potion]];
+    }
     
+    [[BBTwitterStuff sharedStuff] followerBuddySeedsWithCompletion:^(NSArray *buddySeeds, NSError *error) {
+        if (error) {
+            NSLog(@"ERROR!!!\n%@", error);
+        }
+        if (buddySeeds) {
+            NSLog(@"updating all buddies with followers");
+            NSSet *buddySeedSet = [NSSet setWithArray:buddySeeds];
+            [BBDatabase updateAllBuddiesWithBuddies:buddySeedSet];
+        }
+    }];
+    
+    [[BBTwitterStuff sharedStuff] friendBuddySeedsWithCompletion:^(NSArray *buddySeeds, NSError *error) {
+        if (error) {
+            NSLog(@"ERROR!!!\n%@", error);
+        }
+        if (buddySeeds) {
+            NSLog(@"updating all buddies with friends");
+            NSSet *buddySeedSet = [NSSet setWithArray:buddySeeds];
+            [BBDatabase updateAllBuddiesWithBuddies:buddySeedSet];
+        }
+    }];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window setBackgroundColor:[UIColor blackColor]];
     [self.window makeKeyAndVisible];

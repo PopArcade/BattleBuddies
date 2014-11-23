@@ -56,6 +56,6 @@
 /// Returns a message string if the Buddy levels up for learns a new move
 - (NSString *)giveExp:(NSUInteger)exp;
 
-- (void)resetStats;
+//- (void)resetStats;
 
 @end
