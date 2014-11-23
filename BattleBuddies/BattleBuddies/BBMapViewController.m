@@ -16,6 +16,9 @@
 #import "BBMapAtlas.h"
 
 
+#import "BBItemListViewController.h"
+#import "BBBuddyListViewController.h"
+
 
 @interface BBMapViewController () <UICollectionViewDataSource, UICollectionViewDelegate, BBMapTouchDelegate>
 {
@@ -40,6 +43,9 @@
 
 @property (nonatomic, strong) BBMapAtlas *tileMap;
 
+@property (nonatomic, strong) UIButton *itemsButton;
+@property (nonatomic, strong) UIButton *buddiesButton;
+
 @end
 
 @implementation BBMapViewController
@@ -57,7 +63,14 @@
     
     [self setTileMap:[[BBMapAtlas alloc] init]];
     
+    [self.view addSubview:self.itemsButton];
+    [self.view addSubview:self.buddiesButton];
     
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(8.0)-[items]-(>=0.0)-[buddies]-(8.0)-|" options:0 metrics:nil views:@{@"items": self.itemsButton, @"buddies": self.buddiesButton}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(8.0)-[items]" options:0 metrics:nil views:@{@"items": self.itemsButton, @"buddies": self.buddiesButton}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(8.0)-[buddies]" options:0 metrics:nil views:@{@"items": self.itemsButton, @"buddies": self.buddiesButton}]];
+    
+
 //    NSMutableArray *columns = [NSMutableArray array];
 //    for (int x = 0; x < 2000; x++) {
 //        NSMutableArray *column = [NSMutableArray array];
@@ -92,6 +105,22 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+}
+
+#pragma mark - Navigation
+
+- (void)showItems
+{
+    BBItemListViewController *itemList = [[BBItemListViewController alloc] init];
+    
+    [self presentViewController:itemList animated:YES completion:nil];
+}
+
+- (void)showBuddies
+{
+    BBBuddyListViewController *buddyList = [[BBBuddyListViewController alloc] init];
+    
+    [self presentViewController:buddyList animated:YES completion:nil];
 }
 
 #pragma mark - BBMapTouchDelegate
@@ -257,6 +286,30 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[upLeft(>=96.0)][left(==right)][downLeft(==upLeft)]|" options:0 metrics:nil views:directionButtons]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[up(>=96.0)][left][down(==up)]|" options:0 metrics:nil views:directionButtons]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[upRight(==downRight)][right(==left)][downRight(==upRight)]|" options:0 metrics:nil views:directionButtons]];
+}
+
+- (UIButton *)itemsButton
+{
+    if (!_itemsButton) {
+        _itemsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [_itemsButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_itemsButton setTitle:@"Items" forState:UIControlStateNormal];
+        [_itemsButton addTarget:self action:@selector(showItems) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _itemsButton;
+}
+
+- (UIButton *)buddiesButton
+{
+    if (!_buddiesButton) {
+        _buddiesButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [_buddiesButton setTranslatesAutoresizingMaskIntoConstraints:NO];
+        [_buddiesButton setTitle:@"Buddies" forState:UIControlStateNormal];
+        [_buddiesButton addTarget:self action:@selector(showBuddies) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return _buddiesButton;
 }
 
 #pragma mark - Directions
