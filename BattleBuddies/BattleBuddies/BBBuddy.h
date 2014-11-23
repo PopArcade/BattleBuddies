@@ -13,7 +13,7 @@
 #import "BBAttack.h"
 #import "BBBuddySeed.h"
 
-@interface BBBuddy : NSObject
+@interface BBBuddy : NSObject <NSCoding>
 
 @property (nonatomic, strong, readonly) NSString *name;
 

@@ -66,14 +66,9 @@ NSInteger const kSecondEvolution = 35;
     if (self) {
         NSString *md5 = [self MD5forString:uniqueIdentifier];
         
-        _element = (BBElement)[self NSUIntegerForCharacterAtPosition:0 ofHexString:md5];
-        _baseAttack = @([self baseStat:kBBAttackKey fromElement:_element andCharacterAtPosition:1 ofHexString:md5]);
-        _baseSpAttack = @([self baseStat:kBBSpAttackKey fromElement:_element andCharacterAtPosition:2 ofHexString:md5]);
-        _baseDefense = @([self baseStat:kBBDefenseKey fromElement:_element andCharacterAtPosition:3 ofHexString:md5]);
-        _baseSpDefense = @([self baseStat:kBBSpDefenseKey fromElement:_element andCharacterAtPosition:4 ofHexString:md5]);
-        _baseMaxHealth = @([self baseStat:kBBHealthKey fromElement:_element andCharacterAtPosition:5 ofHexString:md5]);
-        _baseSpeed = @([self baseStat:kBBSpeedKey fromElement:_element andCharacterAtPosition:6 ofHexString:md5]);
-        _baseAgility = @([self baseStat:kBBAgilityKey fromElement:_element andCharacterAtPosition:7 ofHexString:md5]);
+        [self setUpBaseStatsWithUniqueIdentifier:md5];
+        
+        _uniqueIdentifier = md5;
         
         NSArray *names = [name componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         
@@ -91,18 +86,6 @@ NSInteger const kSecondEvolution = 35;
         }
         
         _names = mutableNamesArray.copy;
-        
-        NSMutableArray *mutableAttackArray = [NSMutableArray array];
-        
-        for (NSUInteger i = BBLevelClassFirst; i <= BBLevelClassMax; i++) {
-            NSInteger variation = [self NSUIntegerForCharacterAtPosition:(10 + (uint)i) ofHexString:md5] > 7 ? 1 : 0;
-            
-            BBAttack *attack = [BBAttack attackNumber:variation forElement:_element inLevelClass:i];
-            
-            [mutableAttackArray addObject:attack];
-        }
-        
-        _learnableAttacks = mutableAttackArray.copy;
         
         _level = level;
         _evolutionLevel = (level < kFirstEvolution ? 0 : (level < kSecondEvolution ? 1 : 2));
@@ -129,7 +112,26 @@ NSInteger const kSecondEvolution = 35;
 
 - (void)setUpBaseStatsWithUniqueIdentifier:(NSString *)uniqueIdentifier
 {
+    _element = (BBElement)[self NSUIntegerForCharacterAtPosition:0 ofHexString:uniqueIdentifier];
+    _baseAttack = @([self baseStat:kBBAttackKey fromElement:_element andCharacterAtPosition:1 ofHexString:uniqueIdentifier]);
+    _baseSpAttack = @([self baseStat:kBBSpAttackKey fromElement:_element andCharacterAtPosition:2 ofHexString:uniqueIdentifier]);
+    _baseDefense = @([self baseStat:kBBDefenseKey fromElement:_element andCharacterAtPosition:3 ofHexString:uniqueIdentifier]);
+    _baseSpDefense = @([self baseStat:kBBSpDefenseKey fromElement:_element andCharacterAtPosition:4 ofHexString:uniqueIdentifier]);
+    _baseMaxHealth = @([self baseStat:kBBHealthKey fromElement:_element andCharacterAtPosition:5 ofHexString:uniqueIdentifier]);
+    _baseSpeed = @([self baseStat:kBBSpeedKey fromElement:_element andCharacterAtPosition:6 ofHexString:uniqueIdentifier]);
+    _baseAgility = @([self baseStat:kBBAgilityKey fromElement:_element andCharacterAtPosition:7 ofHexString:uniqueIdentifier]);
     
+    NSMutableArray *mutableAttackArray = [NSMutableArray array];
+    
+    for (NSUInteger i = BBLevelClassFirst; i <= BBLevelClassMax; i++) {
+        NSInteger variation = [self NSUIntegerForCharacterAtPosition:(10 + (uint)i) ofHexString:uniqueIdentifier] > 7 ? 1 : 0;
+        
+        BBAttack *attack = [BBAttack attackNumber:variation forElement:_element inLevelClass:i];
+        
+        [mutableAttackArray addObject:attack];
+    }
+    
+    _learnableAttacks = mutableAttackArray.copy;
 }
 
 #pragma upgrading

@@ -64,12 +64,18 @@ typedef void(^BBTwitterStuffLoadMoreCompletion)(NSString *cursor, NSError *error
                 // Creating a request to get the info about a user on Twitter
                 
                 __weak BBTwitterStuff *weakSelf = self;
+                self.buddySeeds = nil;
             
                 self.loadMoreCompletion = ^(NSString *cursor, NSError *error) {
                     SLRequest *twitterInfoRequest = [weakSelf twitterInfoRequestWithEARL:requestEARL twitterAccount:twitterAccount andCursor:cursor];
                     
                     [twitterInfoRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
                         dispatch_async(dispatch_get_main_queue(), ^{
+                            if ([urlResponse statusCode] == 429) {
+                                completion(weakSelf.buddySeeds.copy, [NSError errorWithDomain:@"idunno" code:0 userInfo:@{NSLocalizedDescriptionKey: @"Rate Limit Reached"}]);
+                                return;
+                            }
+                            
                             
                             // Check if there is some response data
                             
@@ -130,6 +136,7 @@ typedef void(^BBTwitterStuffLoadMoreCompletion)(NSString *cursor, NSError *error
     if (cursor) {
         [dictionary setObject:cursor forKey:@"cursor"];
     }
+    [dictionary setObject:@(200) forKey:@"count"];
     
     SLRequest *infoRequest = [SLRequest requestForServiceType:SLServiceTypeTwitter requestMethod:SLRequestMethodGET URL:requestEARL parameters:dictionary.copy];
     [infoRequest setAccount:account];
