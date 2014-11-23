@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		453203931A223458004A3E21 /* BBItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 453203921A223458004A3E21 /* BBItem.m */; };
 		45AFCFD919FD4E4E0044381B /* BBBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFD819FD4E4E0044381B /* BBBuddy.m */; };
 		45AFCFDF19FD535F0044381B /* BBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFDE19FD535F0044381B /* BBConstants.m */; };
 		45AFCFE219FD58E00044381B /* BBBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFE119FD58E00044381B /* BBBody.m */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		453203911A223458004A3E21 /* BBItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBItem.h; sourceTree = "<group>"; };
+		453203921A223458004A3E21 /* BBItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBItem.m; sourceTree = "<group>"; };
 		45AFCFD719FD4E4E0044381B /* BBBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBuddy.h; sourceTree = "<group>"; };
 		45AFCFD819FD4E4E0044381B /* BBBuddy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBuddy.m; sourceTree = "<group>"; };
 		45AFCFDA19FD50750044381B /* BBAttack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAttack.h; sourceTree = "<group>"; };
@@ -104,6 +107,8 @@
 				45AFCFDB19FD50750044381B /* BBAttack.m */,
 				45AFCFE019FD58E00044381B /* BBBody.h */,
 				45AFCFE119FD58E00044381B /* BBBody.m */,
+				453203911A223458004A3E21 /* BBItem.h */,
+				453203921A223458004A3E21 /* BBItem.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 				45AFCFDF19FD535F0044381B /* BBConstants.m in Sources */,
 				EF92549819FD3B0400FFA3F8 /* BBMapViewController.m in Sources */,
 				45AFCFD919FD4E4E0044381B /* BBBuddy.m in Sources */,
+				453203931A223458004A3E21 /* BBItem.m in Sources */,
 				EF92547619FD3A7800FFA3F8 /* AppDelegate.m in Sources */,
 				45AFCFE219FD58E00044381B /* BBBody.m in Sources */,
 				EF92547319FD3A7800FFA3F8 /* main.m in Sources */,
