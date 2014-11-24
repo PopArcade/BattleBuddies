@@ -7,8 +7,17 @@
 //
 
 #import "BBConstants.h"
+#import "BBDatabase.h"
+
+NSString * NSStringForBBElement(BBElement element)
+{
+    return [BBDatabase elementArray][element];
+}
 
 CGFloat BBElementEffectiveMultiplierForElements(BBElement attackingElement, BBElement defendingElement)
 {
-    return 1.0;
+    NSArray *attackArray = [BBDatabase elementEffectivenessArray][attackingElement];
+    NSNumber *effectiveness = attackArray[defendingElement];
+    
+    return [effectiveness floatValue];
 }

@@ -29,6 +29,7 @@
 + (NSDictionary *)attacksDictionary;
 + (NSArray *)attackSyllabusArray;
 + (NSArray *)elementArray;
++ (NSArray *)elementEffectivenessArray;
 + (NSString *)stringForElement:(NSUInteger)element;
 
 @end

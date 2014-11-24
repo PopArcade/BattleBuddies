@@ -156,6 +156,17 @@ NSString * const BBDatabaseUserDefaultKeyAllBuddies = @"AllBBBuddies";
     return elementArray;
 }
 
++ (NSArray *)elementEffectivenessArray
+{
+    static NSArray *elementEffectivenessArray = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        elementEffectivenessArray = [NSArray arrayWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"elementEffectiveness" withExtension:@"plist"]];
+    });
+    
+    return elementEffectivenessArray;
+}
+
 + (NSString *)stringForElement:(NSUInteger)element
 {
     return [BBDatabase elementArray][element];

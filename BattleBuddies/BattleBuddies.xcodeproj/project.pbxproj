@@ -12,6 +12,7 @@
 		453203991A2255DE004A3E21 /* BBTwitterStuff.m in Sources */ = {isa = PBXBuildFile; fileRef = 453203981A2255DE004A3E21 /* BBTwitterStuff.m */; };
 		4532039B1A225759004A3E21 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4532039A1A225759004A3E21 /* Accounts.framework */; };
 		4532039D1A225760004A3E21 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4532039C1A225760004A3E21 /* Social.framework */; };
+		453CB9561A22C3DB005531A1 /* elementEffectiveness.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45459FAD1A22BA12004476BA /* elementEffectiveness.plist */; };
 		45AFCFD919FD4E4E0044381B /* BBBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFD819FD4E4E0044381B /* BBBuddy.m */; };
 		45AFCFDF19FD535F0044381B /* BBConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFDE19FD535F0044381B /* BBConstants.m */; };
 		45AFCFE219FD58E00044381B /* BBBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AFCFE119FD58E00044381B /* BBBody.m */; };
@@ -77,6 +78,7 @@
 		453203981A2255DE004A3E21 /* BBTwitterStuff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBTwitterStuff.m; sourceTree = "<group>"; };
 		4532039A1A225759004A3E21 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		4532039C1A225760004A3E21 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		45459FAD1A22BA12004476BA /* elementEffectiveness.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = elementEffectiveness.plist; sourceTree = "<group>"; };
 		45AFCFD719FD4E4E0044381B /* BBBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBuddy.h; sourceTree = "<group>"; };
 		45AFCFD819FD4E4E0044381B /* BBBuddy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBuddy.m; sourceTree = "<group>"; };
 		45AFCFDA19FD50750044381B /* BBAttack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBAttack.h; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				45AFCFF119FDC0D40044381B /* AttackSyllabus.plist */,
 				45AFCFE419FD6A4C0044381B /* BaseAttributes.plist */,
 				45AFCFE919FD920B0044381B /* NameSuffix.plist */,
+				45459FAD1A22BA12004476BA /* elementEffectiveness.plist */,
 				45AFCFE619FD78EF0044381B /* BBDatabase.h */,
 				45AFCFE719FD78EF0044381B /* BBDatabase.m */,
 				453203971A2255DE004A3E21 /* BBTwitterStuff.h */,
@@ -451,6 +454,7 @@
 				EFCF81841A22AC4200B5535D /* NewWalk1.mp3 in Resources */,
 				EFCF81851A22AC4200B5535D /* Menu.mp3 in Resources */,
 				EFCF81861A22AC4200B5535D /* Intense2.mp3 in Resources */,
+				453CB9561A22C3DB005531A1 /* elementEffectiveness.plist in Resources */,
 				45AFCFEA19FD920B0044381B /* NameSuffix.plist in Resources */,
 				EFCF81901A22BC6600B5535D /* Buddies.xcassets in Resources */,
 				EFCF817F1A22AC4200B5535D /* MenuIn.mp3 in Resources */,

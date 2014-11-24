@@ -53,4 +53,5 @@ typedef NS_ENUM(NSInteger, BBLevelClass) {
     BBLevelClassFirst = BBLevelClassTwo,
 };;
 
+NSString * NSStringForBBElement(BBElement element);
 CGFloat BBElementEffectiveMultiplierForElements(BBElement attackingElement, BBElement defendingElement);
