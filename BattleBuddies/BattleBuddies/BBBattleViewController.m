@@ -117,19 +117,25 @@
                                                                         multiplier:1.0
                                                                           constant:-32.0]];
     
+    [self.view addSubview:self.enemyLabel];
+    [self.view addSubview:self.playerLabel];
+    
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[label]-(8.0)-|" options:0 metrics:nil views:@{@"label": self.enemyLabel}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(8.0)-[label]" options:0 metrics:nil views:@{@"label": self.enemyLabel}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(8.0)-[label]" options:0 metrics:nil views:@{@"label": self.playerLabel}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[label]-(8.0)-|" options:0 metrics:nil views:@{@"label": self.playerLabel}]];
+    
     // Setup GTFO Button
     [self.view addSubview:self.gtfoButton];
-    
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[gtfo]" options:0 metrics:nil views:@{@"gtfo": self.gtfoButton}]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[gtfo]" options:0 metrics:nil views:@{@"gtfo": self.gtfoButton}]];
     
     // Setup Option Buttons
     [self.view addSubview:self.newBuddyButton];
     [self.view addSubview:self.backpackButton];
     
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[newBuddy]-[backpack]" options:0 metrics:nil views:@{@"newBuddy": self.newBuddyButton, @"backpack": self.backpackButton}]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[newBuddy]-|" options:0 metrics:nil views:@{@"newBuddy": self.newBuddyButton, @"backpack": self.backpackButton}]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[backpack]-|" options:0 metrics:nil views:@{@"newBuddy": self.newBuddyButton, @"backpack": self.backpackButton}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[gtfo]-[newBuddy]-[backpack]" options:0 metrics:nil views:@{@"gtfo": self.gtfoButton, @"newBuddy": self.newBuddyButton, @"backpack": self.backpackButton}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[gtfo]" options:0 metrics:nil views:@{@"gtfo": self.gtfoButton, @"newBuddy": self.newBuddyButton, @"backpack": self.backpackButton}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[newBuddy]" options:0 metrics:nil views:@{@"newBuddy": self.newBuddyButton, @"backpack": self.backpackButton}]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[backpack]" options:0 metrics:nil views:@{@"newBuddy": self.newBuddyButton, @"backpack": self.backpackButton}]];
     
     // Setup Attack Buttons
     [self.view addSubview:self.attackAButton];
@@ -171,8 +177,6 @@
     
     [self.enemyFaceView setImage:[[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:_opponent.faceImage]]];
     [self.enemyFaceView faceAwareFill];
-    
-    [self setPlayer:opponent];
 }
 
 - (void)setPlayer:(BBBuddy *)player
@@ -194,6 +198,13 @@
     
 
     [self.playerBuddyImageView setImage:buddyImage];
+}
+
+- (void)setBuddies:(NSArray *)buddies
+{
+    _buddies = buddies;
+    
+    [self setPlayer:_buddies.firstObject];
 }
 
 #pragma mark - Attacks
@@ -347,6 +358,30 @@
     }
     
     return _enemyFaceView;
+}
+
+- (UILabel *)enemyLabel
+{
+    if (!_enemyLabel) {
+        _enemyLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [_enemyLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        
+        [_enemyLabel setFont:[UIFont boldSystemFontOfSize:22.0]];
+    }
+    
+    return _enemyLabel;
+}
+
+- (UILabel *)playerLabel
+{
+    if (!_playerLabel) {
+        _playerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        [_playerLabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+        
+        [_playerLabel setFont:[UIFont boldSystemFontOfSize:22.0]];
+    }
+    
+    return _playerLabel;
 }
 
 - (UIButton *)attackAButton

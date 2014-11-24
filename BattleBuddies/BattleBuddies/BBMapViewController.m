@@ -36,6 +36,8 @@
     NSArray *availableBuddies;
     
     SDAudioPlayer *menuMusic;
+    
+    NSArray *selectedBuddies;
 }
 
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -125,6 +127,8 @@
         _availableBuddies = nil;
         
         NSLog(@"Buddyies Loaded: %@",[availableBuddies valueForKey:NSStringFromSelector(@selector(name))]);
+        
+        selectedBuddies = @[availableBuddies.firstObject];
     }];
     
     [[BBTwitterStuff sharedStuff] friendBuddySeedsWithCompletion:^(NSArray *buddySeeds, NSError *error) {
@@ -149,7 +153,10 @@
         _availableBuddies = nil;
         
         NSLog(@"Buddyies Loaded: %@",[availableBuddies valueForKey:NSStringFromSelector(@selector(name))]);
+        
+        selectedBuddies = @[availableBuddies.firstObject];
     }];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -187,6 +194,7 @@
     
     BBBattleViewController *battleView = [[BBBattleViewController alloc] init];
     [battleView setOpponent:opponent];
+    [battleView setBuddies:selectedBuddies];
     
     // Setup for Presentation
 //    [battleView setModalPresentationStyle:UIModalPresentationCustom];
@@ -256,9 +264,7 @@
 
 - (void)buddyListViewController:(BBBuddyListViewController *)controller didFinishWithSelectedBuddies:(NSArray *)buddies
 {
-    [buddies enumerateObjectsUsingBlock:^(BBBuddy *buddy, NSUInteger idx, BOOL *stop) {
-        NSLog(@"Selected: %@", buddy);
-    }];
+    selectedBuddies = buddies.copy;
 }
 
 

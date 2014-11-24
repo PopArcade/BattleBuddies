@@ -13,5 +13,6 @@
 @interface BBBattleViewController : UIViewController <BBBuddyListViewControllerDelegate>
 
 @property (nonatomic, strong) BBBuddy *opponent;
+@property (nonatomic, strong) NSArray *buddies;
 
 @end

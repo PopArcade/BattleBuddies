@@ -111,6 +111,13 @@
 //    [cell.contentView addSubview:cell.buddyImage];
     [cell.contentView addSubview:cell.buddyName];
     
+    if ([self.selectedBuddies containsObject:buddy]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     return cell;
 }
 
@@ -127,32 +134,25 @@
 //    BBBuddy *buddy = [[BBDatabase caughtBuddies] objectAtIndex:indexPath.row];
 //    BBBuddy *buddy = [self.caughtBuddies objectAtIndex:indexPath.row];
 //    BBBuddyCell *thisCell = [self.buddyListTableView cellForRowAtIndexPath:indexPath];
+    
+    
     BBBuddyCell *thisCell = (BBBuddyCell *) [tableView cellForRowAtIndexPath:indexPath];
+    BBBuddy *buddy = [self.caughtBuddies objectAtIndex:indexPath.row];
 
-    
-
-    if (thisCell.accessoryType == UITableViewCellAccessoryCheckmark)
-    {
-        [self.selectedBuddies removeObject:thisCell.buddyName.text];
+    if (thisCell.accessoryType == UITableViewCellAccessoryCheckmark) {
+        [self.selectedBuddies removeObject:buddy];
     }
     
-    if ([self.selectedBuddies count] < self.maxSelections)
-    {
-        if (thisCell.accessoryType == UITableViewCellAccessoryNone)
-        {
-        thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
-        [self.selectedBuddies addObject:thisCell.buddyName.text];
+    if ([self.selectedBuddies count] < self.maxSelections) {
+        if (thisCell.accessoryType == UITableViewCellAccessoryNone) {
+            thisCell.accessoryType = UITableViewCellAccessoryCheckmark;
+
+            [self.selectedBuddies addObject:buddy];
         }
-        else
-        {
-        thisCell.accessoryType = UITableViewCellAccessoryNone;
+        else {
+            thisCell.accessoryType = UITableViewCellAccessoryNone;
         }
     }
-    NSLog(@"%@",self.selectedBuddies);
-    NSLog(@"%lu",(unsigned long)[self.selectedBuddies count]);
-    
-//    if ([self.selectedBuddies count] > 5) {self.doneButton.enabled = YES;}
-//    if ([self.selectedBuddies count] < 6) {self.doneButton.enabled = NO;}
 }
 
 - (void)didReceiveMemoryWarning {
