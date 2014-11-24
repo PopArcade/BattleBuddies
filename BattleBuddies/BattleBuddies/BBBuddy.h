@@ -13,6 +13,9 @@
 #import "BBAttack.h"
 #import "BBBuddySeed.h"
 
+@class BBBuddy;
+typedef void(^BBAttackCompletion)(BBAttack *attack, BBBuddy *attackingBuddy, BBBuddy *targetBuddy, BOOL hitSuccess, BOOL statusChangerSuccess, CGFloat elementEffectiveness);
+
 @interface BBBuddy : NSObject <NSCoding>
 
 @property (nonatomic, strong, readonly) NSString *name;
@@ -43,10 +46,10 @@
 @property (nonatomic, strong, readonly) BBAttack *attack3;
 @property (nonatomic, strong, readonly) BBAttack *attack4;
 
-@property (nonatomic, readonly) NSUInteger attack1pp;
-@property (nonatomic, readonly) NSUInteger attack2pp;
-@property (nonatomic, readonly) NSUInteger attack3pp;
-@property (nonatomic, readonly) NSUInteger attack4pp;
+@property (nonatomic, readwrite) NSUInteger attack1pp;
+@property (nonatomic, readwrite) NSUInteger attack2pp;
+@property (nonatomic, readwrite) NSUInteger attack3pp;
+@property (nonatomic, readwrite) NSUInteger attack4pp;
 
 - (instancetype)initFromUniqueIdentifier:(NSString *)uniqueIdentifier name:(NSString *)name imageURL:(NSURL *)imageURL level:(NSUInteger)level;
 
@@ -56,6 +59,9 @@
 /// Returns a message string if the Buddy levels up for learns a new move
 - (NSString *)giveExp:(NSUInteger)exp;
 
-//- (void)resetStats;
+- (void)performAttack:(BBAttack *)attack onBuddy:(BBBuddy *)enemyBuddy withCompletion:(BBAttackCompletion)completion;
+
+- (void)takeDamage:(NSInteger)damage;
+- (void)heal:(NSInteger)healAmount;
 
 @end

@@ -29,6 +29,9 @@ NSString * const BBBuddyEncodingKeyFaceImage = @"faceimage";
 NSInteger const kFirstEvolution = 15;
 NSInteger const kSecondEvolution = 35;
 
+#define kAttackDamageMultiple 1.0
+#define kAttackAccuracyMultiple 0.1
+
 @interface BBBuddy ()
 
 @property (nonatomic, strong) NSString *uniqueIdentifier;
@@ -59,10 +62,10 @@ NSInteger const kSecondEvolution = 35;
 @property (nonatomic, strong) NSArray *learnableAttacks;
 @property (nonatomic, strong) NSArray *currentAttacks;
 
-@property (nonatomic, readwrite) NSUInteger attack1pp;
-@property (nonatomic, readwrite) NSUInteger attack2pp;
-@property (nonatomic, readwrite) NSUInteger attack3pp;
-@property (nonatomic, readwrite) NSUInteger attack4pp;
+//@property (nonatomic, readwrite) NSUInteger attack1pp;
+//@property (nonatomic, readwrite) NSUInteger attack2pp;
+//@property (nonatomic, readwrite) NSUInteger attack3pp;
+//@property (nonatomic, readwrite) NSUInteger attack4pp;
 
 @end
 
@@ -224,6 +227,62 @@ NSInteger const kSecondEvolution = 35;
 - (NSUInteger)neededExperienceForLevel
 {
     return (self.level * 10);
+}
+
+#pragma mark - Attacking
+
+- (void)performAttack:(BBAttack *)attack onBuddy:(BBBuddy *)enemyBuddy withCompletion:(BBAttackCompletion)completion
+{
+    NSNumber *attackStrength, *defenseStrength;
+    
+    if (attack.special) {
+        attackStrength = self.spAttack;
+        defenseStrength = enemyBuddy.spDefense;
+    }
+    else {
+        attackStrength = self.attack;
+        defenseStrength = enemyBuddy.defense;
+    }
+    
+    CGFloat elementMultiple = BBElementEffectiveMultiplierForElements(attack.element, enemyBuddy.element);
+    
+    NSInteger damage = (NSInteger)(([attackStrength floatValue] / [defenseStrength floatValue]) * [attack.power floatValue] * elementMultiple *kAttackDamageMultiple * ((arc4random_uniform(7) + 97) / 100.0));
+    
+    CGFloat attackerAgility = [self.agility floatValue];
+    CGFloat defenderAgility = [enemyBuddy.agility floatValue];
+    
+    CGFloat changeOfHitting = (((attackerAgility - defenderAgility) / attackerAgility) * kAttackAccuracyMultiple) + [attack.accuracy floatValue];
+    
+    CGFloat randomAttackFloat = (arc4random_uniform(101) / 100.0);
+    BOOL attackHit = changeOfHitting >= randomAttackFloat;
+    BOOL statusChangerHit = NO;
+    BBBuddy *targetBuddy = attack.targetsSelf ? self : enemyBuddy;
+    
+    if (attackHit) {
+        [targetBuddy takeDamage:damage];
+        
+        CGFloat randomStatusFloat = ((arc4random_uniform(100) + 1) / 100.0);
+        statusChangerHit = attack.statusChangerAccuracy.floatValue >= randomStatusFloat;
+        
+        if (statusChangerHit) {
+            [targetBuddy setStatus:attack.statusChanger];
+        }
+    }
+    
+    completion(attack, self, targetBuddy, attackHit, statusChangerHit, elementMultiple);
+}
+
+- (void)takeDamage:(NSInteger)damage
+{
+    NSInteger health = [self.health integerValue] - damage;
+    health = MIN(health, self.maxHealth.integerValue);
+    health = MAX(health, 0);
+    self.health = @(health);
+}
+
+- (void)heal:(NSInteger)healAmount
+{
+    [self takeDamage:-healAmount];
 }
 
 #pragma mark - Attacks

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
 
 typedef NS_ENUM(NSInteger, BBStatusChanger) {
     BBStatusChangerNone = 0,
@@ -52,6 +53,4 @@ typedef NS_ENUM(NSInteger, BBLevelClass) {
     BBLevelClassFirst = BBLevelClassTwo,
 };;
 
-@interface BBConstants : NSObject
-
-@end
+CGFloat BBElementEffectiveMultiplierForElements(BBElement attackingElement, BBElement defendingElement);

@@ -8,6 +8,7 @@
 
 #import "BBConstants.h"
 
-@implementation BBConstants
-
-@end
+CGFloat BBElementEffectiveMultiplierForElements(BBElement attackingElement, BBElement defendingElement)
+{
+    return 1.0;
+}
