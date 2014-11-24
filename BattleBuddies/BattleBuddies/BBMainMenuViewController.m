@@ -9,7 +9,12 @@
 #import "BBMainMenuViewController.h"
 #import "BBMapViewController.h"
 
+#import "SDSoundManager.h"
+
 @interface BBMainMenuViewController ()
+{
+    SDAudioPlayer *menuMusic;
+}
 
 @property (nonatomic, strong) UIImageView *backgroundView;
 @property (nonatomic, strong) UIImageView *logoView;
@@ -32,6 +37,21 @@
     [self.view addSubview:self.backgroundView];
     [self.view addSubview:self.logoView];
     [self.view addSubview:self.playButton];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    menuMusic = [[SDSoundManager sharedManager] loopAudioNamed:@"Menu" atVolume:0.0];
+    [menuMusic fadeInOverTime:5.0];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [menuMusic fadeOut];
 }
 
 - (void)play:(id)sender

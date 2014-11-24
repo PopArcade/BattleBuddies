@@ -35,6 +35,8 @@
     int tilesWalked;
     
     NSArray *availableBuddies;
+    
+    SDAudioPlayer *menuMusic;
 }
 
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -162,7 +164,15 @@
 {
     [super viewDidAppear:animated];
     
-//    [self startBattleAgainstBuddy:nil];
+    menuMusic = [[SDSoundManager sharedManager] loopAudioNamed:@"NewWalk2" atVolume:0.0];
+    [menuMusic fadeInOverTime:5.0];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [menuMusic fadeOut];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
