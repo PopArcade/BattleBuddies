@@ -9,6 +9,7 @@
 #import "BBDatabase.h"
 
 NSString * const BBDatabaseUserDefaultKeyBackpack = @"BBBackpack";
+NSString * const BBDatabaseUserDefaultKeyCarriedBuddies = @"CarriedBBBuddies";
 NSString * const BBDatabaseUserDefaultKeyCaughtBuddies = @"CaughtBBBuddies";
 NSString * const BBDatabaseUserDefaultKeyAllBuddies = @"AllBBBuddies";
 
@@ -48,6 +49,34 @@ NSString * const BBDatabaseUserDefaultKeyAllBuddies = @"AllBBBuddies";
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:mutableBackpack.copy];
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:BBDatabaseUserDefaultKeyBackpack];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (NSArray *)carriedBuddies
+{
+    NSData *buddiesData = [[NSUserDefaults standardUserDefaults] objectForKey:BBDatabaseUserDefaultKeyCarriedBuddies];
+    NSArray *buddies = buddiesData ? [NSKeyedUnarchiver unarchiveObjectWithData:buddiesData] : nil;
+    
+    return buddies ? buddies : [NSArray array];
+}
+
++ (void)setCarriedBuddies:(NSArray *)buddies
+{
+    if (buddies) {
+        // Leave the method if anything in the array is not a Buddy
+        __block BOOL shouldExit = NO;
+        [buddies enumerateObjectsUsingBlock:^(NSObject *obj, NSUInteger idx, BOOL *stop) {
+            if (!obj || [obj isKindOfClass:[BBBuddy class]]) {
+                shouldExit = YES;
+            }
+        }];
+        if (shouldExit) {
+            return;
+        }
+        
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:buddies];
+        [[NSUserDefaults standardUserDefaults] setObject:data forKey:BBDatabaseUserDefaultKeyCarriedBuddies];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 + (NSArray *)caughtBuddies

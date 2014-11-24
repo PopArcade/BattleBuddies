@@ -22,7 +22,7 @@
     
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"soundEffects"];
     [[NSUserDefaults standardUserDefaults] setFloat:1.0 forKey:@"soundEffectsVolume"];
-
+    
     // Stub out fake items if they don't have any
     if ([[BBDatabase itemsInBackpack] count] == 0) {
         [BBDatabase addItemToBackpack:[BBItem buddyBall]];

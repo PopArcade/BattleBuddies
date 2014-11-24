@@ -16,6 +16,10 @@
 + (void)addItemToBackpack:(BBItem *)item;
 + (void)removeItemFromBackpackAtIndex:(NSUInteger)index;
 
+/// Returns an array of Buddies currently being carried
++ (NSArray *)carriedBuddies;
++ (void)setCarriedBuddies:(NSArray *)buddies;
+
 /// Returns an array of Caught Buddies
 + (NSArray *)caughtBuddies;
 + (void)addBuddyToCaughtBuddies:(BBBuddy *)buddy;
