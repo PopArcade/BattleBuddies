@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Frozen Fire Studios, Inc. All rights reserved.
 //
 
+#import "UIImageView+UIImageView_FaceAwareFill.h"
+
 #import "BBBattleViewController.h"
 
 #import "BBItemListViewController.h"
@@ -16,12 +18,15 @@
 
 #import "SDSoundManager.h"
 
+@import CoreImage;
+
 @interface BBBattleViewController ()
 
 @property (nonatomic, strong) BBBuddy *player;
 
 @property (nonatomic, strong) BBTriangleView *enemyView;
 @property (nonatomic, strong) UIImageView *enemyBuddyImageView;
+@property (nonatomic, strong) UIImageView *enemyFaceView;
 @property (nonatomic, strong) UILabel *enemyLabel;
 @property (nonatomic, strong) BBHealthBar *enemyHealthBar;
 
@@ -75,7 +80,42 @@
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.playerBuddyImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:0.4 constant:1.0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.enemyBuddyImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeWidth multiplier:0.4 constant:1.0]];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.enemyBuddyImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeHeight multiplier:0.4 constant:1.0]];
-
+    
+    // SEtup enemy face
+    [self.enemyBuddyImageView addSubview:self.enemyFaceView];
+    
+    [self.enemyBuddyImageView addConstraint:[NSLayoutConstraint constraintWithItem:self.enemyFaceView
+                                                                         attribute:NSLayoutAttributeHeight
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:nil
+                                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                                        multiplier:1.0
+                                                                          constant:72.0]];
+    
+    [self.enemyBuddyImageView addConstraint:[NSLayoutConstraint constraintWithItem:self.enemyFaceView
+                                                                         attribute:NSLayoutAttributeWidth
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:nil
+                                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                                        multiplier:1.0
+                                                                          constant:72.0]];
+    
+    
+    [self.enemyBuddyImageView addConstraint:[NSLayoutConstraint constraintWithItem:self.enemyFaceView
+                                                                         attribute:NSLayoutAttributeCenterX
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.enemyBuddyImageView
+                                                                         attribute:NSLayoutAttributeCenterX
+                                                                        multiplier:1.0
+                                                                          constant:0.0]];
+    
+    [self.enemyBuddyImageView addConstraint:[NSLayoutConstraint constraintWithItem:self.enemyFaceView
+                                                                         attribute:NSLayoutAttributeCenterY
+                                                                         relatedBy:NSLayoutRelationEqual
+                                                                            toItem:self.enemyBuddyImageView
+                                                                         attribute:NSLayoutAttributeCenterY
+                                                                        multiplier:1.0
+                                                                          constant:-32.0]];
     
     // Setup GTFO Button
     [self.view addSubview:self.gtfoButton];
@@ -121,7 +161,16 @@
     _opponent = opponent;
     
     [self.enemyLabel setText:_opponent.name];
-    [self.enemyBuddyImageView setImage:[UIImage imageNamed:_opponent.bodyImageFront]];
+    UIImage *buddyImage = [UIImage imageNamed:_opponent.bodyImageFront];
+    
+    if (!buddyImage) {
+        NSLog(@"Shit no buddy image: %@",_opponent.bodyImageFront);
+    }
+    
+    [self.enemyBuddyImageView setImage:buddyImage];
+    
+    [self.enemyFaceView setImage:[[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:_opponent.faceImage]]];
+    [self.enemyFaceView faceAwareFill];
     
     [self setPlayer:opponent];
 }
@@ -136,7 +185,15 @@
     [self.attackDButton setTitle:_player.attack4.name forState:UIControlStateNormal];
     
     [self.playerLabel setText:_player.name];
-    [self.playerBuddyImageView setImage:[UIImage imageNamed:_player.bodyImageBack]];
+    
+    UIImage *buddyImage = [UIImage imageNamed:_player.bodyImageBack];
+    
+    if (!buddyImage) {
+        NSLog(@"Shit no buddy image: %@",_player.bodyImageFront);
+    }
+    
+
+    [self.playerBuddyImageView setImage:buddyImage];
 }
 
 #pragma mark - Attacks
@@ -217,7 +274,7 @@
         _enemyView = [[BBTriangleView alloc] initWithFrame:CGRectZero];
         [_enemyView setTranslatesAutoresizingMaskIntoConstraints:NO];
         
-        [_enemyView setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:0.05]];
+        [_enemyView setBackgroundColor:[[UIColor redColor] colorWithAlphaComponent:0.1]];
         
         [_enemyView setStartingCorner:BBTriangleCornerTopRight];
     }
@@ -231,7 +288,7 @@
         _playerView = [[BBTriangleView alloc] initWithFrame:CGRectZero];
         [_playerView setTranslatesAutoresizingMaskIntoConstraints:NO];
         
-        [_playerView setBackgroundColor:[[UIColor greenColor] colorWithAlphaComponent:0.05]];
+        [_playerView setBackgroundColor:[[UIColor greenColor] colorWithAlphaComponent:0.1]];
         
         [_playerView setStartingCorner:BBTriangleCornerBottomLeft];
     }
@@ -261,6 +318,24 @@
     }
     
     return _playerBuddyImageView;
+}
+
+- (UIImageView *)enemyFaceView
+{
+    if (!_enemyFaceView) {
+        _enemyFaceView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 72.0, 72.0)];
+        [_enemyFaceView setTranslatesAutoresizingMaskIntoConstraints:NO];
+        
+        [_enemyFaceView setContentMode:UIViewContentModeScaleAspectFill];
+        
+        [_enemyFaceView.layer setCornerRadius:CGRectGetWidth(_enemyFaceView.frame) / 2.0];
+        [_enemyFaceView setClipsToBounds:YES];
+        
+        [_enemyFaceView.layer setBorderColor:[UIColor blackColor].CGColor];
+        [_enemyFaceView.layer setBorderWidth:1.0];
+    }
+    
+    return _enemyFaceView;
 }
 
 - (UIButton *)attackAButton

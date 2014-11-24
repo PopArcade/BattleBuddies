@@ -56,6 +56,7 @@
 		EFCF81891A22AC4200B5535D /* Battle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EFCF817E1A22AC4200B5535D /* Battle.mp3 */; };
 		EFCF818C1A22B13700B5535D /* BBBattleDismissalController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF818B1A22B13700B5535D /* BBBattleDismissalController.m */; };
 		EFCF81901A22BC6600B5535D /* Buddies.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFCF818F1A22BC6600B5535D /* Buddies.xcassets */; };
+		EFCF81931A22CB2F00B5535D /* UIImageView+UIImageView_FaceAwareFill.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF81911A22CB2F00B5535D /* UIImageView+UIImageView_FaceAwareFill.m */; };
 		EFDE419319FD73650035B28B /* BBMapTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFDE419219FD73650035B28B /* BBMapTouchView.m */; };
 /* End PBXBuildFile section */
 
@@ -149,6 +150,8 @@
 		EFCF818A1A22B13700B5535D /* BBBattleDismissalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBattleDismissalController.h; sourceTree = "<group>"; };
 		EFCF818B1A22B13700B5535D /* BBBattleDismissalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBattleDismissalController.m; sourceTree = "<group>"; };
 		EFCF818F1A22BC6600B5535D /* Buddies.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Buddies.xcassets; sourceTree = "<group>"; };
+		EFCF81911A22CB2F00B5535D /* UIImageView+UIImageView_FaceAwareFill.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+UIImageView_FaceAwareFill.m"; sourceTree = "<group>"; };
+		EFCF81921A22CB2F00B5535D /* UIImageView+UIImageView_FaceAwareFill.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+UIImageView_FaceAwareFill.h"; sourceTree = "<group>"; };
 		EFDE419119FD73650035B28B /* BBMapTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMapTouchView.h; sourceTree = "<group>"; };
 		EFDE419219FD73650035B28B /* BBMapTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMapTouchView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -334,6 +337,8 @@
 			children = (
 				EF92549919FD3B1700FFA3F8 /* BBBattleViewController.h */,
 				EF92549A19FD3B1700FFA3F8 /* BBBattleViewController.m */,
+				EFCF81921A22CB2F00B5535D /* UIImageView+UIImageView_FaceAwareFill.h */,
+				EFCF81911A22CB2F00B5535D /* UIImageView+UIImageView_FaceAwareFill.m */,
 				EFCF81671A22937500B5535D /* BBTriangleView.h */,
 				EFCF81681A22937500B5535D /* BBTriangleView.m */,
 				EFCF816A1A2299C500B5535D /* BBHealthBar.h */,
@@ -509,6 +514,7 @@
 				45AFCFF719FDCD160044381B /* BBAttack.m in Sources */,
 				453203961A225419004A3E21 /* BBBuddySeed.m in Sources */,
 				EF92549E19FD44B800FFA3F8 /* BBGridLayout.m in Sources */,
+				EFCF81931A22CB2F00B5535D /* UIImageView+UIImageView_FaceAwareFill.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

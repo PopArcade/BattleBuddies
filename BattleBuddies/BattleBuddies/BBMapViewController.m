@@ -171,8 +171,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
-    [menuMusic fadeOut];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
@@ -184,6 +182,8 @@
 
 - (void)startBattleAgainstBuddy:(BBBuddy *)opponent
 {
+    [menuMusic fadeOut];
+    
     [[SDSoundManager sharedManager] playSoundEffectNamed:@"BattleIn"];
     
     BBBattleViewController *battleView = [[BBBattleViewController alloc] init];
