@@ -189,12 +189,12 @@
     [battleView setOpponent:opponent];
     
     // Setup for Presentation
-    [battleView setModalPresentationStyle:UIModalPresentationCustom];
-    [battleView setTransitioningDelegate:self];
+//    [battleView setModalPresentationStyle:UIModalPresentationCustom];
+//    [battleView setTransitioningDelegate:self];
     
     [self presentViewController:battleView animated:YES completion:^{
-        [battleView setModalPresentationStyle:UIModalPresentationFullScreen];
-        [battleView setTransitioningDelegate:nil];
+//        [battleView setModalPresentationStyle:UIModalPresentationFullScreen];
+//        [battleView setTransitioningDelegate:nil];
     }];
 }
 
@@ -542,11 +542,6 @@
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
 {
     return [[BBBattlePresentationController alloc] init];
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
-{
-    return [[BBBattleDismissalController alloc] init];
 }
 
 @end
