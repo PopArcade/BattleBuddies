@@ -229,8 +229,10 @@
 
 - (void)buddyListViewController:(BBBuddyListViewController *)controller didFinishWithSelectedBuddies:(NSArray *)buddies
 {
-    BBBuddy *buddy = buddies[0];
-    NSLog(@"selected: %@", buddy);
+    if (buddies.count > 0) {
+        BBBuddy *buddy = buddies[0];
+        NSLog(@"selected: %@", buddy);
+    }
 }
 
 #pragma mark - Views
