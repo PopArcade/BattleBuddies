@@ -7,6 +7,7 @@
 //
 
 #import "BBBattlePresentationController.h"
+#import "SDSoundManager.h"
 
 @interface BBBattlePresentationController ()
 {
@@ -21,7 +22,7 @@
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
 {
-    return 2.0;
+    return [[SDSoundManager sharedManager] lengthOfAudioNamed:@"BattleIn"];
 }
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext

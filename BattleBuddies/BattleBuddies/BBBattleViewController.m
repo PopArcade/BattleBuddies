@@ -14,6 +14,8 @@
 #import "BBTriangleView.h"
 #import "BBHealthBar.h"
 
+#import "SDSoundManager.h"
+
 @interface BBBattleViewController ()
 
 @property (nonatomic, strong) BBBuddy *player;
@@ -105,6 +107,13 @@
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[attackC]-|" options:0 metrics:nil views:attackButtons]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[attackD]-|" options:0 metrics:nil views:attackButtons]];
     [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[attackA]-[attackB]-[attackC]-[attackD]-|" options:0 metrics:nil views:attackButtons]];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [[SDSoundManager sharedManager] loopAudioNamed:@"Battle" atVolume:0.75];
 }
 
 - (void)setOpponent:(BBBuddy *)opponent

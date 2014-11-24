@@ -21,11 +21,13 @@
 
 #import "BBBattleViewController.h"
 #import "BBBattlePresentationController.h"
+#import "BBBattleDismissalController.h"
 
 #import "BBTwitterStuff.h"
 #import "BBDatabase.h"
 #import "BBBuddy.h"
 
+#import "SDSoundManager.h"
 
 @interface BBMapViewController () <UICollectionViewDataSource, UICollectionViewDelegate, BBMapTouchDelegate, UIViewControllerTransitioningDelegate>
 {
@@ -100,8 +102,6 @@
     
     
     // Load twitter buddies.
-    __block BOOL followers;
-    __block BOOL friends;
     [[BBTwitterStuff sharedStuff] followerBuddySeedsWithCompletion:^(NSArray *buddySeeds, NSError *error) {
         if (error) {
             NSLog(@"ERROR!!!\n%@", error);
@@ -112,22 +112,18 @@
             [BBDatabase updateAllBuddiesWithBuddies:buddySeedSet];
         }
         
-        followers = YES;
+        NSMutableArray *_availableBuddies = [NSMutableArray array];
         
-        if (followers && friends) {
-            NSMutableArray *_availableBuddies = [NSMutableArray array];
+        [[BBDatabase allBuddies] enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+            BBBuddy *buddy = [BBBuddy buddyFromBuddySeed:obj atLevel:10];
             
-            [[BBDatabase allBuddies] enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-                BBBuddy *buddy = [BBBuddy buddyFromBuddySeed:obj atLevel:10];
-                
-                [_availableBuddies addObject:buddy];
-            }];
-            
-            availableBuddies = _availableBuddies.copy;
-            _availableBuddies = nil;
-            
-            NSLog(@"Buddyies Loaded: %@",[availableBuddies valueForKey:NSStringFromSelector(@selector(name))]);
-        }
+            [_availableBuddies addObject:buddy];
+        }];
+        
+        availableBuddies = _availableBuddies.copy;
+        _availableBuddies = nil;
+        
+        NSLog(@"Buddyies Loaded: %@",[availableBuddies valueForKey:NSStringFromSelector(@selector(name))]);
     }];
     
     [[BBTwitterStuff sharedStuff] friendBuddySeedsWithCompletion:^(NSArray *buddySeeds, NSError *error) {
@@ -140,22 +136,18 @@
             [BBDatabase updateAllBuddiesWithBuddies:buddySeedSet];
         }
         
-        friends = YES;
+        NSMutableArray *_availableBuddies = [NSMutableArray array];
         
-        if (followers && friends) {
-            NSMutableArray *_availableBuddies = [NSMutableArray array];
+        [[BBDatabase allBuddies] enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
+            BBBuddy *buddy = [BBBuddy buddyFromBuddySeed:obj atLevel:10];
             
-            [[BBDatabase allBuddies] enumerateObjectsUsingBlock:^(id obj, BOOL *stop) {
-                BBBuddy *buddy = [BBBuddy buddyFromBuddySeed:obj atLevel:10];
-                
-                [_availableBuddies addObject:buddy];
-            }];
-            
-            availableBuddies = _availableBuddies.copy;
-            _availableBuddies = nil;
-            
-            NSLog(@"Buddyies Loaded: %@",[availableBuddies valueForKey:NSStringFromSelector(@selector(name))]);
-        }
+            [_availableBuddies addObject:buddy];
+        }];
+        
+        availableBuddies = _availableBuddies.copy;
+        _availableBuddies = nil;
+        
+        NSLog(@"Buddyies Loaded: %@",[availableBuddies valueForKey:NSStringFromSelector(@selector(name))]);
     }];
 }
 
@@ -182,6 +174,8 @@
 
 - (void)startBattleAgainstBuddy:(BBBuddy *)opponent
 {
+    [[SDSoundManager sharedManager] playSoundEffectNamed:@"BattleIn"];
+    
     BBBattleViewController *battleView = [[BBBattleViewController alloc] init];
     [battleView setOpponent:opponent];
     
@@ -189,7 +183,10 @@
     [battleView setModalPresentationStyle:UIModalPresentationCustom];
     [battleView setTransitioningDelegate:self];
     
-    [self presentViewController:battleView animated:YES completion:nil];
+    [self presentViewController:battleView animated:YES completion:^{
+        [battleView setModalPresentationStyle:UIModalPresentationFullScreen];
+        [battleView setTransitioningDelegate:nil];
+    }];
 }
 
 - (void)centerTheMapForSize:(CGSize)size
@@ -526,6 +523,11 @@
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
 {
     return [[BBBattlePresentationController alloc] init];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    return [[BBBattleDismissalController alloc] init];
 }
 
 @end

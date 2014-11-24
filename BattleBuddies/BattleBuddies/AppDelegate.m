@@ -19,6 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"soundEffects"];
+    [[NSUserDefaults standardUserDefaults] setFloat:1.0 forKey:@"soundEffectsVolume"];
 
     // Stub out fake items if they don't have any
     if ([[BBDatabase itemsInBackpack] count] == 0) {
