@@ -10,4 +10,7 @@
 
 @interface BBBuddyCell : UITableViewCell
 
+@property (strong, nonatomic) UILabel *buddyName;
+@property (strong, nonatomic) UIImageView *buddyImage;
+
 @end

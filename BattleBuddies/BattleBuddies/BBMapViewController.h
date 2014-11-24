@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 #import "BBMapGenerator.h"
+#import "BBBuddyListViewController.h"
 
-@interface BBMapViewController : UIViewController
+@interface BBMapViewController : UIViewController <BBBuddyListViewControllerDelegate>
 
 @property (nonatomic, strong) BBMapGenerator *generator;
 

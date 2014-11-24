@@ -8,8 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BBBuddyListViewController : UIViewController
+@class  BBBuddyListViewController;
 
+@protocol BBBuddyListViewControllerDelegate <NSObject>
+
+- (void)buddyListViewController:(BBBuddyListViewController *)controller didFinishWithSelectedBuddies:(NSArray *)buddies;
+
+@end
+
+@interface BBBuddyListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (weak, nonatomic) id<BBBuddyListViewControllerDelegate> delegate;
 @property (strong, nonatomic) UITableView *buddyListTableView;
+@property (strong, nonatomic) NSMutableArray *selectedBuddies;
+@property (readwrite, nonatomic) NSUInteger maxSelections;
+
+- (instancetype)initWithMaxNumberOfSelections:(NSUInteger)maxSelections;
 
 @end

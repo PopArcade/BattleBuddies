@@ -17,7 +17,6 @@
 
 
 #import "BBItemListViewController.h"
-#import "BBBuddyListViewController.h"
 
 #import "BBBattleViewController.h"
 #import "BBBattlePresentationController.h"
@@ -227,7 +226,8 @@
 
 - (void)showBuddies
 {
-    BBBuddyListViewController *buddyList = [[BBBuddyListViewController alloc] init];
+    BBBuddyListViewController *buddyList = [[BBBuddyListViewController alloc] initWithMaxNumberOfSelections:6];
+    [buddyList setDelegate:self];
     
     [self presentViewController:[[UINavigationController alloc] initWithRootViewController:buddyList] animated:YES completion:nil];
 }
@@ -249,6 +249,15 @@
         if (CGRectContainsPoint(button.frame, view.locationOfTouch)) {
             [button sendActionsForControlEvents:UIControlEventTouchUpInside];
         }
+    }];
+}
+
+#pragma mark - BBBuddyListViewControllerDelegate
+
+- (void)buddyListViewController:(BBBuddyListViewController *)controller didFinishWithSelectedBuddies:(NSArray *)buddies
+{
+    [buddies enumerateObjectsUsingBlock:^(BBBuddy *buddy, NSUInteger idx, BOOL *stop) {
+        NSLog(@"Selected: %@", buddy);
     }];
 }
 

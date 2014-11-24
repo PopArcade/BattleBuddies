@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BBBuddy.h"
+#import "BBBuddyListViewController.h"
 
-@interface BBBattleViewController : UIViewController
+@interface BBBattleViewController : UIViewController <BBBuddyListViewControllerDelegate>
 
 @property (nonatomic, strong) BBBuddy *opponent;
 

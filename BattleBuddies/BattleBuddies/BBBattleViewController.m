@@ -219,9 +219,18 @@
 
 - (void)showBuddies
 {
-    BBBuddyListViewController *buddyList = [[BBBuddyListViewController alloc] init];
+    BBBuddyListViewController *buddyList = [[BBBuddyListViewController alloc] initWithMaxNumberOfSelections:1];
+    [buddyList setDelegate:self];
     
     [self presentViewController:[[UINavigationController alloc] initWithRootViewController:buddyList] animated:YES completion:nil];
+}
+
+#pragma mark - BBBuddyListViewControllerDelegate
+
+- (void)buddyListViewController:(BBBuddyListViewController *)controller didFinishWithSelectedBuddies:(NSArray *)buddies
+{
+    BBBuddy *buddy = buddies[0];
+    NSLog(@"selected: %@", buddy);
 }
 
 #pragma mark - Views

@@ -7,7 +7,6 @@
 //
 
 #import "BBItemCell.h"
-#import "BBItem.h"
 
 @implementation BBItemCell
 
@@ -26,9 +25,8 @@
 - (UIImageView *)itemImage
 {
     if (!_itemImage) {
-        _itemImage = [[UIImageView alloc] initWithFrame:CGRectMake(40, 7, 50, 50)];
+        _itemImage = [[UIImageView alloc] initWithFrame:CGRectMake(40.0, 7, 50, 50)];
         _itemImage.backgroundColor = [UIColor blackColor];
-        _itemName.autoresizingMask = YES;
     }
     return _itemImage;
 }
@@ -36,9 +34,8 @@
 - (UILabel *)itemName
 {
     if (!_itemName) {
-        _itemName = [[UILabel alloc] initWithFrame:CGRectMake(100, 7, 250, 50)];
-        _itemName.backgroundColor = [UIColor whiteColor];
-        _itemName.autoresizingMask = YES;
+        _itemName = [[UILabel alloc] initWithFrame:CGRectMake(100, 7, 200, 50)];
+        _itemName.backgroundColor = [UIColor redColor];
     }
     return _itemName;
 }
