@@ -121,7 +121,7 @@
     _opponent = opponent;
     
     [self.enemyLabel setText:_opponent.name];
-    [self.enemyBuddyImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:_opponent.bodyImage]]];
+    [self.enemyBuddyImageView setImage:[UIImage imageNamed:_opponent.bodyImageFront]];
     
     [self setPlayer:opponent];
 }
@@ -136,7 +136,7 @@
     [self.attackDButton setTitle:_player.attack4.name forState:UIControlStateNormal];
     
     [self.playerLabel setText:_player.name];
-    [self.playerBuddyImageView setImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:_player.bodyImage]]];
+    [self.playerBuddyImageView setImage:[UIImage imageNamed:_player.bodyImageBack]];
 }
 
 #pragma mark - Attacks
@@ -246,8 +246,6 @@
         [_enemyBuddyImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
         
         [_enemyBuddyImageView setContentMode:UIViewContentModeScaleAspectFit];
-        
-        [_enemyBuddyImageView setBackgroundColor:[UIColor redColor]];
     }
     
     return _enemyBuddyImageView;
@@ -260,8 +258,6 @@
         [_playerBuddyImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
         
         [_playerBuddyImageView setContentMode:UIViewContentModeScaleAspectFit];
-        
-        [_playerBuddyImageView setBackgroundColor:[UIColor redColor]];
     }
     
     return _playerBuddyImageView;

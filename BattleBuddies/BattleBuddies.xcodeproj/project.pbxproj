@@ -54,6 +54,7 @@
 		EFCF81881A22AC4200B5535D /* Walk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EFCF817D1A22AC4200B5535D /* Walk.mp3 */; };
 		EFCF81891A22AC4200B5535D /* Battle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EFCF817E1A22AC4200B5535D /* Battle.mp3 */; };
 		EFCF818C1A22B13700B5535D /* BBBattleDismissalController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCF818B1A22B13700B5535D /* BBBattleDismissalController.m */; };
+		EFCF81901A22BC6600B5535D /* Buddies.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFCF818F1A22BC6600B5535D /* Buddies.xcassets */; };
 		EFDE419319FD73650035B28B /* BBMapTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = EFDE419219FD73650035B28B /* BBMapTouchView.m */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +146,7 @@
 		EFCF817E1A22AC4200B5535D /* Battle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Battle.mp3; sourceTree = "<group>"; };
 		EFCF818A1A22B13700B5535D /* BBBattleDismissalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBBattleDismissalController.h; sourceTree = "<group>"; };
 		EFCF818B1A22B13700B5535D /* BBBattleDismissalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBBattleDismissalController.m; sourceTree = "<group>"; };
+		EFCF818F1A22BC6600B5535D /* Buddies.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Buddies.xcassets; sourceTree = "<group>"; };
 		EFDE419119FD73650035B28B /* BBMapTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBMapTouchView.h; sourceTree = "<group>"; };
 		EFDE419219FD73650035B28B /* BBMapTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBMapTouchView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,6 +235,7 @@
 				45AFCFD619FD4E110044381B /* Model */,
 				EF99FB1E1A2233600045E1BC /* ViewControllers */,
 				EF92547D19FD3A7800FFA3F8 /* Images.xcassets */,
+				EFCF818F1A22BC6600B5535D /* Buddies.xcassets */,
 				EF92547F19FD3A7800FFA3F8 /* LaunchScreen.xib */,
 				EF92547019FD3A7800FFA3F8 /* Supporting Files */,
 			);
@@ -449,6 +452,7 @@
 				EFCF81851A22AC4200B5535D /* Menu.mp3 in Resources */,
 				EFCF81861A22AC4200B5535D /* Intense2.mp3 in Resources */,
 				45AFCFEA19FD920B0044381B /* NameSuffix.plist in Resources */,
+				EFCF81901A22BC6600B5535D /* Buddies.xcassets in Resources */,
 				EFCF817F1A22AC4200B5535D /* MenuIn.mp3 in Resources */,
 				EF92547E19FD3A7800FFA3F8 /* Images.xcassets in Resources */,
 				EFCF81831A22AC4200B5535D /* NewWalk2.mp3 in Resources */,

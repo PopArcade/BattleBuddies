@@ -37,7 +37,8 @@ NSInteger const kSecondEvolution = 35;
 @property (nonatomic, strong) NSString *uniqueIdentifier;
 
 @property (nonatomic, strong, readwrite) NSArray *names;
-@property (nonatomic, strong, readwrite) NSURL *bodyImage;
+@property (nonatomic, strong) NSString *bodyImageBack;
+@property (nonatomic, strong) NSString *bodyImageFront;
 
 @property (nonatomic, strong, readwrite) NSURL *faceImage;
 
@@ -402,13 +403,22 @@ NSInteger const kSecondEvolution = 35;
     return avg;
 }
 
-- (NSURL *)bodyImage
+- (NSString *)bodyImageBack
 {
-    if (!_bodyImage) {
-        _bodyImage = [[NSBundle mainBundle] URLForResource:[NSString stringWithFormat:@"%li-%li",self.element,self.evolutionLevel] withExtension:@"png"];
+    if (!_bodyImageBack) {
+        _bodyImageBack = [NSString stringWithFormat:@"%@%liback",[[BBDatabase stringForElement:self.element] lowercaseString],self.evolutionLevel];
     }
     
-    return _bodyImage;
+    return _bodyImageBack;
+}
+
+- (NSString *)bodyImageFront
+{
+    if (!_bodyImageFront) {
+        _bodyImageFront = [NSString stringWithFormat:@"%@%lifront",[[BBDatabase stringForElement:self.element] lowercaseString],self.evolutionLevel];
+    }
+    
+    return _bodyImageFront;
 }
 
 #pragma mark - Description

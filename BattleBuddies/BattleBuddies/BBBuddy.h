@@ -21,7 +21,8 @@ typedef void(^BBAttackCompletion)(BBAttack *attack, BBBuddy *attackingBuddy, BBB
 @property (nonatomic, strong, readonly) NSString *name;
 
 @property (nonatomic, strong, readonly) NSURL *faceImage;
-@property (nonatomic, strong, readonly) NSURL *bodyImage;
+@property (nonatomic, strong, readonly) NSString *bodyImageBack;
+@property (nonatomic, strong, readonly) NSString *bodyImageFront;
 
 @property (nonatomic, readonly) BBElement element;
 
