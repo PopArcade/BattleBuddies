@@ -87,7 +87,7 @@ typedef void(^BBTwitterStuffLoadMoreCompletion)(NSString *cursor, NSError *error
                                 NSDictionary *TWData = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingMutableLeaves error:&error];
                                 NSArray *users = TWData[@"users"];
                                 
-                                NSLog(@"Users: %li",users.count);
+                                NSLog(@"Users: %li",(unsigned long)users.count);
                                 
                                 [users enumerateObjectsUsingBlock:^(NSDictionary *userDict, NSUInteger idx, BOOL *stop) {
                                     NSString *name = userDict[@"name"];

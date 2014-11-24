@@ -12,6 +12,7 @@
 
 @protocol BBMapTouchDelegate <NSObject>
 
+@optional
 - (void)didBeginTouching:(BBMapTouchView *)view;
 - (void)stillTouching:(BBMapTouchView *)view;
 - (void)didEndTouching:(BBMapTouchView *)view;

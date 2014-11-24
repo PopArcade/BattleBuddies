@@ -187,7 +187,7 @@ NSInteger const kSecondEvolution = 35;
     self.experience += exp;
     
     if (self.experience < self.neededExperienceForLevel) {
-        return [NSString stringWithFormat:@"%@ gained %lu experience points", self.name, exp];
+        return [NSString stringWithFormat:@"%@ gained %lu experience points", self.name, (unsigned long)exp];
     }
     
     // Level Up!
@@ -198,7 +198,7 @@ NSInteger const kSecondEvolution = 35;
         self.level ++;
     }
     
-    NSString *messageString = [NSString stringWithFormat:@"%@ advanced to level %lu", nameBeforeLeveling, self.level];
+    NSString *messageString = [NSString stringWithFormat:@"%@ advanced to level %lu", nameBeforeLeveling, (unsigned long)self.level];
     
     NSArray *newMoveLevels = @[@2, @5, @8, @10, @20, @30, @40, @50];
     NSNumber *levelNumber = @(self.level);
@@ -406,7 +406,7 @@ NSInteger const kSecondEvolution = 35;
 - (NSString *)bodyImageBack
 {
     if (!_bodyImageBack) {
-        _bodyImageBack = [NSString stringWithFormat:@"%@%liback",[[BBDatabase stringForElement:self.element] lowercaseString],self.evolutionLevel];
+        _bodyImageBack = [NSString stringWithFormat:@"%@%liback",[[BBDatabase stringForElement:self.element] lowercaseString],(unsigned long)self.evolutionLevel];
     }
     
     return _bodyImageBack;
@@ -415,7 +415,7 @@ NSInteger const kSecondEvolution = 35;
 - (NSString *)bodyImageFront
 {
     if (!_bodyImageFront) {
-        _bodyImageFront = [NSString stringWithFormat:@"%@%lifront",[[BBDatabase stringForElement:self.element] lowercaseString],self.evolutionLevel];
+        _bodyImageFront = [NSString stringWithFormat:@"%@%lifront",[[BBDatabase stringForElement:self.element] lowercaseString],(unsigned long)self.evolutionLevel];
     }
     
     return _bodyImageFront;
@@ -425,7 +425,7 @@ NSInteger const kSecondEvolution = 35;
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"BUDDY: %@ Element type: %@ Level: %lu\nSTATS:\nAttack    : %d \nSp.Attack: %d \nDefense   : %d \nSp.Defense: %d \nMax Health: %d \nSpeed     : %d \nAgility   : %d \nATTACKS:\n%@", self.name, [BBDatabase stringForElement:self.element], self.level, [self.attack intValue], [self.spAttack intValue], [self.defense intValue], [self.spDefense intValue], [self.maxHealth intValue], [self.speed intValue], [self.agility intValue], self.currentAttacks];
+    return [NSString stringWithFormat:@"BUDDY: %@ Element type: %@ Level: %lu\nSTATS:\nAttack    : %d \nSp.Attack: %d \nDefense   : %d \nSp.Defense: %d \nMax Health: %d \nSpeed     : %d \nAgility   : %d \nATTACKS:\n%@", self.name, [BBDatabase stringForElement:self.element], (unsigned long)self.level, [self.attack intValue], [self.spAttack intValue], [self.defense intValue], [self.spDefense intValue], [self.maxHealth intValue], [self.speed intValue], [self.agility intValue], self.currentAttacks];
 }
 
 #pragma mark - Hashing
